@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>duelokit — two ways in</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ground: #E9F0E7;
+    --forest: #1F4A3D;
+    --soft: #3F5A4F;
+    --paper: #FAF7F0;
+    --line: #9DB0A3;
+    --marigold: #E3A02E;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--forest);
+    font-family: Inter, system-ui, -apple-system, sans-serif;
+  }
+  main {
+    min-height: 100vh;
+    padding: 48px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .brand {
+    margin: 0 0 14px;
+    font-family: "EB Garamond", Georgia, serif;
+    font-size: 44px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .rule {
+    width: 56px; height: 3px;
+    margin: 0 0 40px;
+    border-radius: 2px;
+    background: var(--marigold);
+  }
+  .eyebrow {
+    margin: 0 0 16px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--soft);
+  }
+  h1 {
+    margin: 0 0 14px;
+    font-family: "EB Garamond", Georgia, serif;
+    font-weight: 400;
+    font-size: 54px;
+    line-height: 1.06;
+    letter-spacing: -0.015em;
+  }
+  .lede {
+    margin: 0 0 40px;
+    max-width: 28em;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--soft);
+  }
+
+  .paths {
+    width: 100%;
+    max-width: 760px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .path {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 28px 28px;
+    background: var(--paper);
+    border-radius: 14px;
+    box-shadow: 0 10px 28px rgba(31, 74, 61, 0.08);
+  }
+  .path .eyebrow { margin-bottom: 12px; }
+  h2 {
+    margin: 0 0 10px;
+    font-family: "EB Garamond", Georgia, serif;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+  .path p.body {
+    margin: 0 0 24px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--soft);
+  }
+  .release {
+    margin: auto 0 20px;
+    font-family: "EB Garamond", Georgia, serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--soft);
+  }
+  .btn {
+    display: block;
+    width: 100%;
+    padding: 14px 26px;
+    border-radius: 999px;
+    border: 1px solid var(--forest);
+    background: var(--forest);
+    color: var(--paper);
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+  }
+  .btn:hover { background: #123128; }
+  .btn--quiet { background: transparent; color: var(--forest); }
+  .btn--quiet:hover { background: var(--ground); }
+  .btn:focus-visible { outline: 2px solid var(--marigold); outline-offset: 3px; }
+
+  .foot { margin: 48px 0 0; font-size: 13px; color: var(--soft); }
+
+  /* Products */
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  .shop {
+    padding: 24px 40px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .group {
+    width: 100%;
+    max-width: 760px;
+    padding-block: 56px;
+    scroll-margin-top: 16px;
+  }
+  .group + .group { border-top: 1px solid var(--line); }
+  .group h2 { font-size: 40px; margin-bottom: 10px; }
+  .group .lede { margin: 0 auto 32px; }
+  .products {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .product {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 20px 24px;
+    background: var(--paper);
+    border-radius: 14px;
+    box-shadow: 0 10px 28px rgba(31, 74, 61, 0.08);
+  }
+  .cover {
+    display: grid;
+    place-items: center;
+    padding: 28px 0 24px;
+    margin-bottom: 22px;
+    border-radius: 120px 120px 12px 12px;
+    background: var(--tint, #D5E4D8);
+  }
+  .book {
+    width: 104px;
+    aspect-ratio: 27 / 35;
+    padding: 12px 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--paper);
+    border-radius: 4px 10px 10px 4px;
+    border-left: 7px solid #E8E1CE;
+    box-shadow: 0 14px 28px rgba(31, 74, 61, 0.18);
+    transform: rotate(-2.5deg);
+    font-family: "EB Garamond", Georgia, serif;
+    font-size: 17px;
+    line-height: 1.1;
+  }
+  .book i {
+    display: block;
+    width: 24px;
+    margin: 8px 0 0;
+    border-top: 1px solid var(--forest);
+  }
+  .product h3 {
+    margin: 0 0 4px;
+    font-family: "EB Garamond", Georgia, serif;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 1.1;
+  }
+  .product .price {
+    margin: 0 0 10px;
+    font-family: "EB Garamond", Georgia, serif;
+    font-size: 20px;
+    font-weight: 500;
+  }
+  .product p.body {
+    margin: 0 0 22px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--soft);
+  }
+  .product .btn { margin-top: auto; }
+
+  @media (max-width: 900px) {
+    h1 { font-size: 50px; }
+  }
+  @media (max-width: 680px) {
+    .paths, .products { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 480px) {
+    .shop { padding-inline: 24px; }
+    .group h2 { font-size: 34px; }
+    main { padding: 48px 24px; }
+    .brand { font-size: 38px; margin-bottom: 12px; }
+    .rule { width: 48px; margin-bottom: 32px; }
+    .eyebrow { font-size: 11px; margin-bottom: 12px; }
+    h1 { font-size: 40px; margin-bottom: 12px; }
+    .lede { font-size: 16px; margin-bottom: 28px; }
+    .foot { margin-top: 40px; font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <p class="brand">duelokit.</p>
+  <div class="rule" aria-hidden="true"></div>
+  <p class="eyebrow">Two ways in</p>
+  <h1>Where are you standing?</h1>
+  <p class="lede">Grieving, or beside someone who is. Pick the one that fits today.</p>
+
+  <ul class="paths">
+    <li>
+      <article class="path">
+        <p class="eyebrow">If you're the one grieving</p>
+        <h2>I'm grieving.</h2>
+        <p class="body">Gentle prompts, a few checkboxes, and room to remember. Nothing to catch up on.</p>
+        <p class="release">You don't have to do this well.</p>
+        <a class="btn" href="#grieving">Start here</a>
+      </article>
+    </li>
+    <li>
+      <article class="path">
+        <p class="eyebrow">If you're supporting someone</p>
+        <h2>Someone I love is grieving.</h2>
+        <p class="body">What to say, what to bring, and what to leave alone. Small things you can actually do.</p>
+        <p class="release">It's the thought that counts.</p>
+        <a class="btn btn--quiet" href="#supporting">Start here</a>
+      </article>
+    </li>
+  </ul>
+
+</main>
+
+<!-- Buy links: replace each href="#" with the hosted checkout URL (Stripe Payment Link, Gumroad, Etsy, etc.). -->
+<section class="shop" aria-label="Kits">
+  <section class="group" id="grieving" aria-labelledby="g-title">
+    <p class="eyebrow">For the one grieving</p>
+    <h2 id="g-title">Start where you are.</h2>
+    <p class="lede">Pick one. The other will be here when you're ready.</p>
+    <ul class="products">
+      <li>
+        <article class="product">
+          <div class="cover" aria-hidden="true"><div class="book">The Processing Kit<i></i></div></div>
+          <h3>The Processing Kit</h3>
+          <p class="price">$19</p>
+          <p class="body">For the early, heavy weeks. Gentle prompts, a few checkboxes, and daily grounding sheets. Printable PDF plus a digital copy.</p>
+          <a class="btn" href="#">Get the Processing Kit</a>
+        </article>
+      </li>
+      <li>
+        <article class="product" style="--tint:#F3E8DF">
+          <div class="cover" aria-hidden="true"><div class="book">The Keepsake Archive<i></i></div></div>
+          <h3>The Keepsake Archive</h3>
+          <p class="price">$24</p>
+          <p class="body">For when you're ready to celebrate them. Story prompts, a printable memory folio, and a shared page the family can add to.</p>
+          <a class="btn" href="#">Get the Keepsake Archive</a>
+        </article>
+      </li>
+    </ul>
+  </section>
+
+  <section class="group" id="supporting" aria-labelledby="s-title">
+    <p class="eyebrow">For the one beside them</p>
+    <h2 id="s-title">Small things that help.</h2>
+    <p class="lede">You don't need the right words. These make it easier to show up.</p>
+    <ul class="products">
+      <li>
+        <article class="product" style="--tint:#E6EADB">
+          <div class="cover" aria-hidden="true"><div class="book">Showing Up<i></i></div></div>
+          <h3>The Showing Up Guide</h3>
+          <p class="price">$14</p>
+          <p class="body">What to say, what to bring, and what to leave alone. A short guide you can read in one sitting.</p>
+          <a class="btn" href="#">Get the Showing Up Guide</a>
+        </article>
+      </li>
+      <li>
+        <article class="product" style="--tint:#D5E4D8">
+          <div class="cover" aria-hidden="true"><div class="book">Notes to Send<i></i></div></div>
+          <h3>Notes to Send</h3>
+          <p class="price">$12</p>
+          <p class="body">Printable cards and short messages for the days when words are hard. Write one, mail it, done.</p>
+          <a class="btn" href="#">Get Notes to Send</a>
+        </article>
+      </li>
+    </ul>
+  </section>
+
+  <p class="foot">© 2026 duelokit</p>
+</section>
+</body>
+</html>

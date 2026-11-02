@@ -1,0 +1,169 @@
+/* duelokit look and feel for the Shopify "Studio" theme (Dawn-based).
+   Tokens, type and shapes come from version2.html. CSS only.
+   Load once, after the theme's own CSS:
+     {{ 'duelokit-studio.css' | asset_url | stylesheet_tag }}   (end of <head> in layout/theme.liquid) */
+
+:root {
+  --ground: #E9F0E7;
+  --forest: #1F4A3D;
+  --soft: #3F5A4F;
+  --paper: #FAF7F0;
+  --line: #9DB0A3;
+  --sage-deep: #D5E4D8;
+  --marigold: #E3A02E;
+  --shadow: 0 10px 28px rgba(31, 74, 61, 0.08);
+
+  /* Studio's own variables */
+  --font-heading-family: "EB Garamond", Georgia, serif;
+  --font-heading-weight: 400;
+  --font-body-family: Inter, system-ui, -apple-system, sans-serif;
+  --font-body-weight: 400;
+  --buttons-radius: 999px;
+  --buttons-radius-outset: 999px;
+  --buttons-border-width: 1px;
+  --buttons-border-opacity: 1;
+  --buttons-shadow-opacity: 0;
+  --text-boxes-radius: 14px;
+  --text-boxes-border-opacity: 0;
+  --text-boxes-shadow-opacity: 0;
+  --media-radius: 14px;
+  --media-border-opacity: 0;
+  --media-shadow-opacity: 0;
+  --popup-corner-radius: 14px;
+}
+
+/* Studio colour schemes are "r, g, b" triplets.
+   1 = page (sage), 2 = footer (sage-deep), 3 = cards and announcement bar (cream). */
+.color-scheme-1,
+body {
+  --color-background: 233, 240, 231;
+  --gradient-background: #E9F0E7;
+  --color-foreground: 31, 74, 61;
+  --color-link: 31, 74, 61;
+  --color-button: 31, 74, 61;
+  --color-button-text: 250, 247, 240;
+  --color-secondary-button: 233, 240, 231;
+  --color-secondary-button-text: 31, 74, 61;
+  --color-shadow: 31, 74, 61;
+}
+.color-scheme-2 {
+  --color-background: 213, 228, 216;
+  --gradient-background: #D5E4D8;
+  --color-foreground: 31, 74, 61;
+  --color-link: 31, 74, 61;
+  --color-button: 31, 74, 61;
+  --color-button-text: 250, 247, 240;
+  --color-secondary-button: 213, 228, 216;
+  --color-secondary-button-text: 31, 74, 61;
+  --color-shadow: 31, 74, 61;
+}
+.color-scheme-3 {
+  --color-background: 250, 247, 240;
+  --gradient-background: #FAF7F0;
+  --color-foreground: 31, 74, 61;
+  --color-link: 31, 74, 61;
+  --color-button: 31, 74, 61;
+  --color-button-text: 250, 247, 240;
+  --color-secondary-button: 250, 247, 240;
+  --color-secondary-button-text: 31, 74, 61;
+  --color-shadow: 31, 74, 61;
+}
+
+body {
+  background: var(--ground);
+  color: var(--forest);
+  font-family: var(--font-body-family);
+}
+
+/* Type: Garamond headings, soft green body copy */
+h1, h2, h3, h4, h5,
+.h0, .h1, .h2, .h3, .h4, .h5,
+.header__heading .h2 {
+  font-family: var(--font-heading-family);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--forest);
+}
+.rich-text__heading { text-align: center; }
+.rte p,
+.card-information,
+.newsletter__subheading { color: var(--soft); line-height: 1.6; }
+
+/* Announcement bar: quiet cream strip */
+.utility-bar { border-bottom: 1px solid var(--line); }
+
+/* Header: wordmark and links in forest */
+.header-wrapper { border-bottom: 1px solid var(--line); }
+.header__menu-item,
+.header__icon { color: var(--forest); }
+
+/* Buttons: forest pill, cream Inter text, no theme shadow or border pseudo-elements */
+.button,
+.button--primary,
+.shopify-challenge__button,
+.customer button {
+  min-height: 0;
+  padding: 14px 32px;
+  border: 1px solid var(--forest);
+  border-radius: 999px;
+  background: var(--forest);
+  color: var(--paper);
+  font-family: var(--font-body-family);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0;
+  box-shadow: none;
+  transition: background 0.15s ease;
+}
+.button::before,
+.button::after { display: none; }
+.button:hover { background: #123128; box-shadow: none; }
+.button--secondary { background: transparent; color: var(--forest); }
+.button--secondary:hover { background: var(--ground); }
+.button:focus-visible,
+a:focus-visible { outline: 2px solid var(--marigold); outline-offset: 3px; }
+
+/* "Shop new arrivals": keep Studio's side-by-side grid, restyle only colour, corners and type.
+   Layout, image size and alignment stay under the section's own settings in the theme editor. */
+.image-with-text.collapse-corners {
+  overflow: hidden;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+.image-with-text__media { background: var(--sage-deep); }
+.image-with-text__content::after,
+.image-with-text__media::after { border: 0; box-shadow: none; }
+.image-with-text__heading { line-height: 1.1; }
+.image-with-text__text { color: var(--soft); }
+
+/* Product cards: cream, rounded, forest-tinted shadow */
+.card--standard,
+.card--card {
+  border-radius: 14px;
+  background: var(--paper);
+  box-shadow: var(--shadow);
+}
+.card__inner { border-radius: 14px 14px 0 0; background: var(--sage-deep); }
+.card__heading,
+.card__heading a { font-family: var(--font-heading-family); font-weight: 400; color: var(--forest); }
+.price { font-family: var(--font-heading-family); font-weight: 500; }
+.caption-with-letter-spacing {
+  font-family: var(--font-body-family);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--soft);
+}
+
+/* Newsletter and footer */
+.newsletter-form__button { color: var(--forest); }
+.field__input { border-radius: 999px; }
+.footer { border-top: 1px solid var(--line); }
+.footer a,
+.copyright__content { color: var(--soft); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .button { transition: none; }
+}

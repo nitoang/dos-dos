@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>duelokit — coming soon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ground: #E9F0E7;
+    --forest: #1F4A3D;
+    --soft: #3F5A4F;
+    --paper: #FAF7F0;
+    --line: #9DB0A3;
+    --marigold: #E3A02E;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--forest);
+    font-family: Inter, system-ui, -apple-system, sans-serif;
+  }
+  main {
+    min-height: 100vh;
+    padding: 48px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .brand {
+    margin: 0 0 14px;
+    font-family: "EB Garamond", Georgia, serif;
+    font-size: 44px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .rule {
+    width: 56px; height: 3px;
+    margin: 0 0 40px;
+    border-radius: 2px;
+    background: var(--marigold);
+  }
+  .eyebrow {
+    margin: 0 0 16px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--soft);
+  }
+  h1 {
+    margin: 0 0 14px;
+    font-family: "EB Garamond", Georgia, serif;
+    font-weight: 400;
+    font-size: 54px;
+    line-height: 1.06;
+    letter-spacing: -0.015em;
+  }
+  .lede {
+    margin: 0 0 36px;
+    max-width: 28em;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--soft);
+  }
+  form { width: 100%; max-width: 440px; display: flex; gap: 10px; }
+  .sr-only {
+    position: absolute; width: 1px; height: 1px;
+    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+  }
+  input, button { height: 50px; border-radius: 999px; font: inherit; font-size: 16px; }
+  input {
+    flex: 1 1 auto; min-width: 0;
+    padding: 0 20px;
+    border: 1px solid var(--line);
+    background: var(--paper);
+    color: var(--forest);
+  }
+  input::placeholder { color: #6A7F75; }
+  button {
+    flex: 0 0 auto;
+    padding: 0 26px;
+    border: 0;
+    background: var(--forest);
+    color: var(--paper);
+    font-weight: 500;
+    cursor: pointer;
+  }
+  button:hover { background: #123128; }
+  input:focus-visible, button:focus-visible { outline: 2px solid var(--marigold); outline-offset: 3px; }
+  .foot { margin: 56px 0 0; font-size: 13px; color: var(--soft); }
+
+  /* Tablet (around 820px) */
+  @media (max-width: 900px) {
+    h1 { font-size: 50px; }
+    .foot { margin-top: 64px; }
+  }
+
+  /* Mobile landscape (around 667 × 375) */
+  @media (max-height: 450px) and (orientation: landscape) {
+    main { padding: 24px 32px; }
+    .brand { font-size: 30px; margin-bottom: 8px; }
+    .rule { width: 44px; margin-bottom: 18px; }
+    .eyebrow { font-size: 11px; margin-bottom: 8px; }
+    h1 { font-size: 34px; margin-bottom: 6px; }
+    .lede { font-size: 15px; margin-bottom: 18px; }
+    form { max-width: 420px; gap: 8px; }
+    input, button { height: 44px; }
+    .foot { margin-top: 18px; font-size: 12px; }
+  }
+
+  /* Mobile portrait (around 393px) */
+  @media (max-width: 480px) {
+    main { padding: 48px 24px; }
+    .brand { font-size: 38px; margin-bottom: 12px; }
+    .rule { width: 48px; margin-bottom: 32px; }
+    .eyebrow { font-size: 11px; margin-bottom: 12px; }
+    h1 { font-size: 40px; margin-bottom: 12px; }
+    .lede { font-size: 16px; margin-bottom: 28px; }
+    form { flex-direction: column; }
+    input, button { width: 100%; height: 52px; }
+    input { text-align: center; }
+    .foot { margin-top: 48px; font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <p class="brand">duelokit.</p>
+  <div class="rule" aria-hidden="true"></div>
+  <p class="eyebrow">Coming soon</p>
+  <h1>We're still building.</h1>
+  <p class="lede">Leave your email and we'll let you know when it's ready.</p>
+
+  <form action="#" method="post">
+    <label for="email" class="sr-only">Email address</label>
+    <input id="email" name="email" type="email" placeholder="you@example.com" required>
+    <button type="submit">Notify me</button>
+  </form>
+
+  <p class="foot">© 2026 duelokit</p>
+</main>
+</body>
+</html>

@@ -1,0 +1,189 @@
+/* duelokit look and feel, applied to the "Shop new arrivals" mockup.
+   Tokens and type come from version2.html. CSS only, no markup changes.
+   Selectors cover common theme classes (Shopify Dawn style) plus plain-element
+   fallbacks; rename them to match your markup if anything doesn't catch. */
+
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&display=swap");
+
+:root {
+  --ground: #E9F0E7;
+  --forest: #1F4A3D;
+  --soft: #3F5A4F;
+  --paper: #FAF7F0;
+  --line: #9DB0A3;
+  --sage-deep: #D5E4D8;
+  --marigold: #E3A02E;
+  --shadow: 0 10px 28px rgba(31, 74, 61, 0.08);
+}
+
+body {
+  background: var(--ground);
+  color: var(--forest);
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+}
+
+
+.banner,
+.collection-hero,
+.image-with-text,
+.promo,
+.hero {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  max-width: 760px;
+  margin: 48px auto;
+  background: var(--paper);
+  border: 0;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+
+
+.banner__media,
+.image-with-text__media,
+.promo__image,
+.hero__image {
+  margin: 20px 20px 0;
+  padding: 28px 0 24px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 280px 280px 12px 12px;
+  background: var(--sage-deep);
+}
+
+.banner__media img,
+.image-with-text__media img,
+.promo__image img,
+.hero__image img {
+  width: 62%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 14px 28px rgba(31, 74, 61, 0.18));
+}
+
+
+.banner__content,
+.image-with-text__content,
+.promo__content,
+.hero__content {
+  padding: 32px 28px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: transparent;
+  color: var(--forest);
+}
+
+
+.banner__heading,
+.image-with-text__heading,
+.promo__heading,
+.hero__heading,
+.banner h2,
+.image-with-text h2,
+.promo h2,
+.hero h2 {
+  margin: 0 0 10px;
+  font-family: "EB Garamond", Georgia, serif;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--forest);
+}
+
+.banner__text,
+.image-with-text__text,
+.promo p,
+.hero p {
+  margin: 0 0 24px;
+  max-width: 28em;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--soft);
+}
+
+
+.banner .button,
+.image-with-text .button,
+.promo .button,
+.hero .button,
+.banner a.btn,
+.promo a.btn,
+.hero a.btn {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  padding: 14px 26px;
+  border: 1px solid var(--forest);
+  border-radius: 999px;
+  background: var(--forest);
+  color: var(--paper);
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-decoration: none;
+  box-shadow: none;
+  transition: background 0.15s ease;
+}
+
+.banner .button:hover,
+.image-with-text .button:hover,
+.promo .button:hover,
+.hero .button:hover {
+  background: #123128;
+}
+
+
+.button--secondary,
+.btn--quiet {
+  background: transparent;
+  color: var(--forest);
+}
+.button--secondary:hover,
+.btn--quiet:hover {
+  background: var(--ground);
+}
+
+.button:focus-visible,
+.btn:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--marigold);
+  outline-offset: 3px;
+}
+
+
+.banner__subheading,
+.eyebrow,
+.caption-with-letter-spacing {
+  margin: 0 0 12px;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--soft);
+}
+
+@media (max-width: 480px) {
+  .banner,
+  .image-with-text,
+  .promo,
+  .hero { margin: 24px 24px; }
+  .banner__content,
+  .image-with-text__content,
+  .promo__content,
+  .hero__content { padding: 28px 20px 24px; }
+  .banner h2,
+  .image-with-text h2,
+  .promo h2,
+  .hero h2 { font-size: 34px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button, .btn { transition: none; }
+}

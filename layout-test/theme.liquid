@@ -1,0 +1,78 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#E9F0E7">
+  <link rel="canonical" href="{{ canonical_url }}">
+
+  <title>{{ page_title }}{% if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}</title>
+
+  {%- if page_description -%}
+    <meta name="description" content="{{ page_description | escape }}">
+  {%- endif -%}
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+  {{ content_for_header }}
+
+  <style>
+    :root {
+      --ground: #E9F0E7;
+      --forest: #1F4A3D;
+      --soft: #3F5A4F;
+      --paper: #FAF7F0;
+      --line: #9DB0A3;
+      --sage-deep: #D5E4D8;
+      --marigold: #E3A02E;
+      --shadow: 0 10px 28px rgba(31, 74, 61, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--ground);
+      color: var(--forest);
+      font-family: Inter, system-ui, -apple-system, sans-serif;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: "EB Garamond", Georgia, serif;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      color: var(--forest);
+    }
+
+    p { color: var(--soft); line-height: 1.6; }
+
+    a { color: var(--forest); }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--marigold);
+      outline-offset: 3px;
+    }
+
+    hr { border: 0; border-top: 1px solid var(--line); }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+
+<body>
+  {% sections 'header-group' %}
+
+  <main id="MainContent" role="main">
+    {{ content_for_layout }}
+  </main>
+
+  {% sections 'footer-group' %}
+</body>
+</html>

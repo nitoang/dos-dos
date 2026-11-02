@@ -1,0 +1,797 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-TLD662HG');
+    </script>
+    <!-- End Google Tag Manager -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>duelokit · Two ways in</title>
+    <meta name="description" content="Printable and digital grief kits. One for the first weeks, one for remembering out loud." />
+    <link rel="canonical" href="https://duelokit.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <style>
+      /* duelokit core brand: sage ground, cream panels, forest ink, EB Garamond over Inter labels. */
+      :root {
+        color-scheme: light;
+        --ink: #1f4a3d;
+        --ink-soft: #3f5a4f;
+        --ground-sage: #e9f0e7;
+        --ground-cream: #faf7f0;
+        --sage-deep: #d5e4d8;
+        --olive-mist: #e6eadb;
+        --blush: #f3e8df;
+        --rule-sage: #9db0a3;
+        --rule-blush: #b9a793;
+        --dash-sage: #7c9a8a;
+        --spine: #e8e1ce;
+        --marigold: #e3a02e;
+        --marigold-deep: #c77f1a;
+        --shadow-card: 0 10px 28px rgba(31, 74, 61, 0.08);
+        --shadow-journal: 0 18px 36px rgba(31, 74, 61, 0.18);
+        --shadow-sheet: 0 12px 26px rgba(31, 74, 61, 0.16);
+        --serif: 'EB Garamond', Georgia, serif;
+        --sans: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+      }
+
+      body {
+        background: var(--ground-sage);
+        color: var(--ink);
+        font-family: var(--serif);
+        font-size: 18px;
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+        padding-inline: max(16px, env(safe-area-inset-left, 0px));
+      }
+
+      .wrap {
+        max-width: 1040px;
+        margin-inline: auto;
+      }
+
+      a {
+        color: inherit;
+      }
+      a:focus-visible,
+      button:focus-visible,
+      input:focus-visible {
+        outline: 2px solid var(--ink);
+        outline-offset: 3px;
+      }
+
+      .eyebrow {
+        font-family: var(--sans);
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--ink-soft);
+      }
+
+      /* Hero */
+      .hero {
+        text-align: center;
+        max-width: 680px;
+        margin-inline: auto;
+        padding-block: clamp(48px, 8vw, 88px) clamp(40px, 6vw, 64px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .wordmark {
+        font-family: var(--serif);
+        font-size: 44px;
+        font-weight: 500;
+        letter-spacing: -0.01em;
+        line-height: 1;
+        text-decoration: none;
+      }
+      .accent-bar {
+        width: 56px;
+        height: 3px;
+        background: var(--marigold);
+        border-radius: 2px;
+        margin: 22px 0 28px;
+      }
+      .hero .eyebrow {
+        margin-bottom: 16px;
+      }
+      h1 {
+        font-family: var(--serif);
+        font-weight: 400;
+        font-size: clamp(36px, 5vw, 56px);
+        line-height: 1.08;
+        letter-spacing: -0.015em;
+        text-wrap: balance;
+        margin-bottom: 18px;
+      }
+      .lede {
+        font-size: 19px;
+        color: var(--ink-soft);
+        max-width: 34em;
+        text-wrap: balance;
+      }
+      .hero-link {
+        margin-top: 22px;
+        font-family: var(--sans);
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--ink-soft);
+        text-underline-offset: 4px;
+      }
+      .hero-link:hover {
+        color: var(--ink);
+      }
+
+      /* Path cards */
+      .paths {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 22px;
+        list-style: none;
+      }
+      @media (min-width: 820px) {
+        .paths {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 26px;
+        }
+      }
+      .path {
+        background: var(--ground-cream);
+        border-radius: 14px;
+        box-shadow: var(--shadow-card);
+        padding: clamp(18px, 3vw, 24px);
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+
+      .arch {
+        border-radius: 280px 280px 20px 20px;
+        aspect-ratio: 5 / 4;
+        display: grid;
+        place-items: center;
+        padding: 10% 8% 6%;
+        margin-bottom: 24px;
+        overflow: hidden;
+      }
+      .path--early .arch {
+        background: var(--sage-deep);
+      }
+      .path--remember .arch {
+        background: var(--blush);
+      }
+
+      .stack {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+      }
+      .sheet {
+        position: absolute;
+        width: 34%;
+        aspect-ratio: 19 / 29;
+        background: var(--ground-cream);
+        border-radius: 4px;
+        box-shadow: var(--shadow-sheet);
+        padding: 8% 5%;
+        display: flex;
+        flex-direction: column;
+        gap: 9%;
+      }
+      .sheet span {
+        display: block;
+        height: 1px;
+        background: var(--rule-sage);
+      }
+      .sheet span:first-child {
+        width: 55%;
+        height: 2px;
+        background: var(--ink);
+        opacity: 0.55;
+        margin-bottom: 6%;
+      }
+      .sheet--l {
+        transform: translateX(-46%) rotate(-9deg);
+      }
+      .sheet--r {
+        transform: translateX(46%) rotate(9deg);
+      }
+
+      .journal {
+        position: relative;
+        width: 44%;
+        aspect-ratio: 27 / 35;
+        background: var(--ground-cream);
+        border-radius: 6px 14px 14px 6px;
+        border-left: 9px solid var(--spine);
+        box-shadow: var(--shadow-journal);
+        transform: rotate(-2.5deg);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 10% 8%;
+        color: var(--ink);
+      }
+      .journal .eyebrow {
+        font-size: 11px;
+        letter-spacing: 0.14em;
+        margin-bottom: 10%;
+      }
+      .journal strong {
+        font-weight: 400;
+        font-size: clamp(20px, 2.6vw, 28px);
+        line-height: 1.08;
+        letter-spacing: -0.01em;
+      }
+      .journal hr {
+        width: 40px;
+        border: 0;
+        border-top: 1px solid var(--ink);
+        margin: 10% 0 7%;
+      }
+      .journal em {
+        font-size: clamp(13px, 1.4vw, 16px);
+        color: var(--ink-soft);
+        line-height: 1.3;
+      }
+
+      .path-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 12px;
+        margin-bottom: 10px;
+      }
+      .price {
+        font-size: 24px;
+        font-weight: 500;
+      }
+      .path h2 {
+        font-weight: 400;
+        font-size: 28px;
+        line-height: 1.1;
+        letter-spacing: -0.01em;
+        margin-bottom: 4px;
+      }
+      .path .for {
+        font-style: italic;
+        color: var(--ink-soft);
+        font-size: 18px;
+        margin-bottom: 14px;
+      }
+      .path p.body {
+        color: var(--ink-soft);
+        font-size: 17px;
+        margin-bottom: 20px;
+      }
+
+      .includes {
+        list-style: none;
+        border-top: 1px solid var(--rule-sage);
+        padding-top: 16px;
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .includes li {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        font-size: 17px;
+        line-height: 1.35;
+      }
+      .box {
+        flex-shrink: 0;
+        width: 18px;
+        height: 18px;
+        margin-top: 3px;
+        border: 1.5px solid var(--ink);
+        border-radius: 4px;
+        background: var(--ground-cream);
+      }
+      .dot {
+        flex-shrink: 0;
+        color: var(--marigold-deep);
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      .release {
+        font-style: italic;
+        color: var(--ink-soft);
+        font-size: 18px;
+        margin-top: auto;
+        margin-bottom: 18px;
+      }
+
+      .btn {
+        display: block;
+        width: 100%;
+        padding: 14px 22px;
+        border-radius: 999px;
+        border: 1px solid var(--ink);
+        background: var(--ink);
+        color: var(--ground-cream);
+        font-family: var(--sans);
+        font-size: 14px;
+        font-weight: 500;
+        text-align: center;
+        cursor: pointer;
+        transition:
+          transform 0.15s ease,
+          box-shadow 0.15s ease;
+      }
+      .btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 8px 18px rgba(31, 74, 61, 0.16);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .btn {
+          transition: none;
+        }
+        .btn:hover {
+          transform: none;
+        }
+      }
+
+      /* Audience preview */
+      .audience {
+        margin-bottom: clamp(44px, 6vw, 64px);
+      }
+      .section-head {
+        text-align: center;
+        max-width: 560px;
+        margin: 0 auto 26px;
+      }
+      .section-head h2 {
+        font-weight: 400;
+        font-size: clamp(28px, 3.6vw, 36px);
+        line-height: 1.1;
+        letter-spacing: -0.015em;
+        margin: 10px 0 6px;
+      }
+      .section-head p {
+        color: var(--ink-soft);
+        font-style: italic;
+        font-size: 18px;
+      }
+      .path--self .arch {
+        background: var(--olive-mist);
+      }
+      .path--support .arch {
+        background: var(--sage-deep);
+      }
+      .chip {
+        font-family: var(--sans);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--ink-soft);
+        border: 1px solid var(--dash-sage);
+        border-radius: 999px;
+        padding: 3px 12px;
+        white-space: nowrap;
+      }
+      .btn--quiet {
+        background: transparent;
+        color: var(--ink);
+        text-decoration: none;
+      }
+
+      /* Where to start */
+      .route {
+        margin-top: clamp(44px, 6vw, 64px);
+        background: var(--olive-mist);
+        border-radius: 14px;
+        padding: clamp(22px, 4vw, 36px);
+      }
+      .route h2 {
+        font-weight: 400;
+        font-size: clamp(28px, 3.6vw, 36px);
+        line-height: 1.1;
+        letter-spacing: -0.015em;
+        margin: 10px 0 6px;
+      }
+      .route .sub {
+        color: var(--ink-soft);
+        font-style: italic;
+        font-size: 18px;
+        margin-bottom: 18px;
+      }
+      .route ul {
+        list-style: none;
+      }
+      .route li {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2px;
+        padding-block: 14px;
+        border-top: 1px solid var(--rule-sage);
+      }
+      @media (min-width: 640px) {
+        .route li {
+          grid-template-columns: minmax(0, 1fr) 28px minmax(0, 300px);
+          align-items: baseline;
+          gap: 12px;
+        }
+      }
+      .route .feel {
+        font-size: 21px;
+        line-height: 1.3;
+      }
+      .route .arrow {
+        font-family: var(--sans);
+        font-size: 14px;
+        color: var(--ink-soft);
+      }
+      .route .dest {
+        font-style: italic;
+        color: var(--ink-soft);
+        font-size: 18px;
+      }
+      @media (max-width: 639px) {
+        .route .arrow {
+          display: none;
+        }
+        .route .dest::before {
+          content: '→ ';
+          font-style: normal;
+          font-family: var(--sans);
+          font-size: 14px;
+        }
+      }
+      .route .release {
+        margin: 18px 0 0;
+      }
+
+      /* Free sample */
+      .sample {
+        margin: clamp(44px, 6vw, 64px) auto 0;
+        max-width: 680px;
+        background: var(--sage-deep);
+        border-radius: 14px;
+        padding: clamp(24px, 4vw, 40px);
+        text-align: center;
+      }
+      .sample h2 {
+        font-weight: 400;
+        font-size: clamp(28px, 3.6vw, 34px);
+        line-height: 1.1;
+        letter-spacing: -0.015em;
+        margin: 10px 0 10px;
+      }
+      .sample p {
+        color: var(--ink-soft);
+        font-size: 17px;
+        max-width: 30em;
+        margin: 0 auto 22px;
+      }
+      .sample form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        max-width: 460px;
+        margin-inline: auto;
+      }
+      @media (min-width: 520px) {
+        .sample form {
+          flex-direction: row;
+        }
+      }
+      .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+        border: 0;
+      }
+      .sample input {
+        flex: 1;
+        min-width: 0;
+        height: 50px;
+        padding: 0 20px;
+        border-radius: 999px;
+        border: 1px solid var(--rule-sage);
+        background: var(--ground-cream);
+        color: var(--ink);
+        font-family: var(--sans);
+        font-size: 15px;
+      }
+      .sample input::placeholder {
+        color: var(--ink-soft);
+        opacity: 0.75;
+      }
+      .sample .btn {
+        width: auto;
+        height: 50px;
+        padding: 0 24px;
+        white-space: nowrap;
+      }
+      .status {
+        margin-top: 14px;
+        font-family: var(--sans);
+        font-size: 14px;
+        color: var(--ink);
+        min-height: 1.5em;
+      }
+
+      /* Footer */
+      footer {
+        margin-top: clamp(56px, 8vw, 88px);
+        padding-block: 24px max(32px, env(safe-area-inset-bottom, 0px));
+        border-top: 1px solid var(--rule-sage);
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+        font-family: var(--sans);
+        font-size: 13px;
+        color: var(--ink-soft);
+      }
+      footer .safety {
+        max-width: 46em;
+        margin-inline: auto;
+        line-height: 1.55;
+      }
+      footer strong {
+        font-weight: 600;
+        color: var(--ink);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TLD662HG" height="0" width="0" style="display: none; visibility: hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div class="wrap">
+      <header class="hero">
+        <a class="wordmark" href="/" aria-label="duelokit home">duelokit.</a>
+        <div class="accent-bar" aria-hidden="true"></div>
+        <p class="eyebrow">Two ways in</p>
+        <h1>Some days call for triage. Others call for tribute.</h1>
+        <p class="lede">Grief shifts from week to week. Pick the kit that fits today. The other one will be here when you're ready.</p>
+        <a class="hero-link" href="#sample">Or start with two free pages</a>
+      </header>
+
+      <main>
+        <!-- Audience preview -->
+        <section class="audience" aria-labelledby="aud-title">
+          <div class="section-head">
+            <p class="eyebrow">Who it's for</p>
+            <h2 id="aud-title">Where are you standing?</h2>
+            <p>Grieving, or beside someone who is. Both are real work.</p>
+          </div>
+          <ul class="paths" aria-label="Who duelokit is for">
+            <!-- For the one grieving -->
+            <li>
+              <article class="path path--self" aria-labelledby="a1-title">
+                <div class="arch" aria-hidden="true">
+                  <div class="stack">
+                    <div class="journal">
+                      <span class="eyebrow">For you</span>
+                      <strong>Start where you are</strong>
+                      <hr />
+                      <em>for the one grieving</em>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="path-meta">
+                  <span class="eyebrow">If you're the one grieving</span>
+                  <span class="chip">Preview</span>
+                </div>
+                <h2 id="a1-title">I'm the one grieving.</h2>
+                <p class="for">Start where you are.</p>
+                <p class="body">Nothing here asks you to be okay. Pick what fits today and leave the rest.</p>
+
+                <ul class="includes">
+                  <li><span class="box" aria-hidden="true"></span>Two free quiet pages to begin</li>
+                  <li><span class="box" aria-hidden="true"></span>The Processing Kit for the early weeks</li>
+                  <li><span class="box" aria-hidden="true"></span>The Keepsake Archive when you're ready</li>
+                </ul>
+
+                <p class="release">You don't have to do this well.</p>
+                <a class="btn" href="#kits">See the two kits</a>
+              </article>
+            </li>
+
+            <!-- For the one supporting -->
+            <li>
+              <article class="path path--support" aria-labelledby="a2-title">
+                <div class="arch" aria-hidden="true">
+                  <div class="stack">
+                    <div class="sheet sheet--r"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+                    <div class="journal">
+                      <span class="eyebrow">For them</span>
+                      <strong>Showing up</strong>
+                      <hr />
+                      <em>for the one beside them</em>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="path-meta">
+                  <span class="eyebrow">If you're supporting someone</span>
+                  <span class="chip">Preview</span>
+                </div>
+                <h2 id="a2-title">Someone I love is grieving.</h2>
+                <p class="for">For the one who wants to help.</p>
+                <p class="body">What to say, what to bring, and what to leave alone. Small, doable things.</p>
+
+                <ul class="includes">
+                  <li><span class="dot" aria-hidden="true">●</span>A short guide to showing up</li>
+                  <li><span class="dot" aria-hidden="true">●</span>Notes to send when words are hard</li>
+                  <li><span class="dot" aria-hidden="true">●</span>A list of small things to do for them</li>
+                </ul>
+
+                <p class="release">Showing up late still counts.</p>
+                <a class="btn btn--quiet" href="#sample">Preview the support guide</a>
+              </article>
+            </li>
+          </ul>
+        </section>
+
+        <ul class="paths" id="kits" aria-label="The two kits">
+          <!-- Path 01: earlier in grief -->
+          <li>
+            <article class="path path--early" aria-labelledby="p1-title">
+              <div class="arch" aria-hidden="true">
+                <div class="stack">
+                  <div class="sheet sheet--l"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+                  <div class="sheet sheet--r"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+                  <div class="journal">
+                    <span class="eyebrow">Path 01</span>
+                    <strong>The Processing Kit</strong>
+                    <hr />
+                    <em>for the first weeks</em>
+                  </div>
+                </div>
+              </div>
+
+              <div class="path-meta">
+                <span class="eyebrow">Path 01 · The first weeks</span>
+                <span class="price">$19</span>
+              </div>
+              <h2 id="p1-title">The Processing Kit</h2>
+              <p class="for">For the early, heavy weeks.</p>
+              <p class="body">Gentle prompts and a few checkboxes. Nothing to catch up on.</p>
+
+              <ul class="includes">
+                <li><span class="box" aria-hidden="true"></span>Printable 8.5×11 PDF</li>
+                <li><span class="box" aria-hidden="true"></span>Digital copy (Google Docs + Notion)</li>
+                <li><span class="box" aria-hidden="true"></span>Daily to-do and grounding sheets</li>
+              </ul>
+
+              <p class="release">One box checked counts as getting through the hour.</p>
+              <button type="button" class="btn" data-kit="The Processing Kit">Get the Processing Kit</button>
+            </article>
+          </li>
+
+          <!-- Path 02: further along, celebratory grieving -->
+          <li>
+            <article class="path path--remember" aria-labelledby="p2-title">
+              <div class="arch" aria-hidden="true">
+                <div class="stack">
+                  <div class="journal">
+                    <span class="eyebrow">Path 02</span>
+                    <strong>The Keepsake Archive</strong>
+                    <hr />
+                    <em>for remembering out loud</em>
+                  </div>
+                </div>
+              </div>
+
+              <div class="path-meta">
+                <span class="eyebrow">Path 02 · Remembering out loud</span>
+                <span class="price">$24</span>
+              </div>
+              <h2 id="p2-title">The Keepsake Archive</h2>
+              <p class="for">For when you're ready to celebrate them.</p>
+              <p class="body">Save the recipe, the song they hummed, the story everyone tells. Then share it with the family.</p>
+
+              <ul class="includes">
+                <li><span class="dot" aria-hidden="true">●</span>Printable memory folio</li>
+                <li><span class="dot" aria-hidden="true">●</span>Story prompts to record or write</li>
+                <li><span class="dot" aria-hidden="true">●</span>A shared page the family can add to</li>
+              </ul>
+
+              <p class="release">One detail is a whole memory.</p>
+              <button type="button" class="btn" data-kit="The Keepsake Archive">Get the Keepsake Archive</button>
+            </article>
+          </li>
+        </ul>
+
+        <!-- Where to start -->
+        <section class="route" aria-labelledby="route-title">
+          <p class="eyebrow">Not sure?</p>
+          <h2 id="route-title">Go with how today feels.</h2>
+          <ul>
+            <li><span class="feel">Today feels like a lot.</span><span class="arrow" aria-hidden="true">→</span><span class="dest">The Processing Kit</span></li>
+            <li><span class="feel">I want to tell their stories.</span><span class="arrow" aria-hidden="true">→</span><span class="dest">The Keepsake Archive</span></li>
+          </ul>
+          <p class="release">Some weeks it's both. That's okay.</p>
+        </section>
+
+        <!-- Free sample -->
+        <section class="sample" id="sample" aria-labelledby="sample-title">
+          <p class="eyebrow">Free · Two pages</p>
+          <h2 id="sample-title">Start with two quiet pages.</h2>
+          <p>A grounding sheet and a simple to-do sheet, free. We'll send one email and that's it.</p>
+          <form id="sample-form" novalidate>
+            <label class="visually-hidden" for="sample-email">Email address</label>
+            <input id="sample-email" type="email" name="email" placeholder="Your email" autocomplete="email" required />
+            <button type="submit" class="btn">Send the two pages</button>
+          </form>
+          <p class="status" id="sample-status" role="status" aria-live="polite"></p>
+        </section>
+      </main>
+
+      <footer>
+        <p class="safety">duelokit is a set of tools, not treatment or medical advice. If you feel unsafe, or you're thinking about hurting yourself, <strong>call or text 988</strong> in the US, any hour.</p>
+        <p>© 2026 duelokit. No tracking, no marketing noise.</p>
+      </footer>
+    </div>
+
+    <script>
+      // Checkout: swap each button for your real checkout link (e.g. a Stripe Payment Link) when ready.
+      document.querySelectorAll('.btn[data-kit]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          btn.textContent = 'Opening checkout for ' + btn.dataset.kit + '…';
+        });
+      });
+
+      // Free sample: inline confirmation only. Connect to your email tool to actually send the PDF.
+      var form = document.getElementById('sample-form');
+      var input = document.getElementById('sample-email');
+      var status = document.getElementById('sample-status');
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (!input.value.trim() || !input.checkValidity()) {
+          status.textContent = 'That email looks incomplete. Try it once more.';
+          input.focus();
+          return;
+        }
+        status.textContent = 'On their way. Take good care.';
+        input.value = '';
+      });
+    </script>
+  </body>
+</html>

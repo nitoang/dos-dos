@@ -1,0 +1,152 @@
+<section class="banner">
+  {%- if section.settings.image != blank -%}
+    <div class="banner__media">
+      {{ section.settings.image | image_url: width: 1500 | image_tag: loading: 'lazy', widths: '375, 750, 1100, 1500', alt: section.settings.image.alt }}
+    </div>
+  {%- endif -%}
+
+  <div class="banner__content">
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="banner__subheading">{{ section.settings.eyebrow }}</p>
+    {%- endif -%}
+
+    {%- if section.settings.heading != blank -%}
+      <h2 class="banner__heading">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+
+    {%- if section.settings.text != blank -%}
+      <p class="banner__text">{{ section.settings.text }}</p>
+    {%- endif -%}
+
+    {%- if section.settings.button_label != blank -%}
+      <a class="button" href="{{ section.settings.button_link | default: routes.all_products_collection_url }}">
+        {{- section.settings.button_label -}}
+      </a>
+    {%- endif -%}
+  </div>
+</section>
+
+{% stylesheet %}
+  @import url("https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&display=swap");
+
+  .banner {
+    --ground: #E9F0E7;
+    --forest: #1F4A3D;
+    --soft: #3F5A4F;
+    --paper: #FAF7F0;
+    --sage-deep: #D5E4D8;
+    --marigold: #E3A02E;
+
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    max-width: 760px;
+    margin: 48px auto;
+    background: var(--paper);
+    border-radius: 14px;
+    box-shadow: 0 10px 28px rgba(31, 74, 61, 0.08);
+    color: var(--forest);
+    font-family: Inter, system-ui, -apple-system, sans-serif;
+  }
+
+  .banner__media {
+    margin: 20px 20px 0;
+    padding: 28px 0 24px;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    border-radius: 280px 280px 12px 12px;
+    background: var(--sage-deep);
+  }
+
+  .banner__media img {
+    width: 62%;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 14px 28px rgba(31, 74, 61, 0.18));
+  }
+
+  .banner__content {
+    padding: 32px 28px 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .banner__subheading {
+    margin: 0 0 12px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--soft);
+  }
+
+  .banner__heading {
+    margin: 0 0 10px;
+    font-family: "EB Garamond", Georgia, serif;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--forest);
+  }
+
+  .banner__text {
+    margin: 0 0 24px;
+    max-width: 28em;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--soft);
+  }
+
+  .banner .button {
+    display: block;
+    width: 100%;
+    max-width: 320px;
+    padding: 14px 26px;
+    border: 1px solid var(--forest);
+    border-radius: 999px;
+    background: var(--forest);
+    color: var(--paper);
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.15s ease;
+  }
+
+  .banner .button:hover { background: #123128; }
+
+  .banner .button:focus-visible {
+    outline: 2px solid var(--marigold);
+    outline-offset: 3px;
+  }
+
+  @media (max-width: 480px) {
+    .banner { margin: 24px; }
+    .banner__content { padding: 28px 20px 24px; }
+    .banner__heading { font-size: 34px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .banner .button { transition: none; }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Image banner",
+  "tag": "section",
+  "class": "section-image-banner",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Shop new arrivals." },
+    { "type": "textarea", "id": "text", "label": "Text" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop all" },
+    { "type": "url", "id": "button_link", "label": "Button link" }
+  ],
+  "presets": [{ "name": "Image banner" }]
+}
+{% endschema %}
