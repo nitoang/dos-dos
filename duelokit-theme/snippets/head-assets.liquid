@@ -1,0 +1,37 @@
+{%- comment -%}
+  Fonts, color tokens and the stylesheet. Shared by theme.liquid and password.liquid.
+  The font pairing matches the coming-soon page: EB Garamond for display and body, Inter for labels.
+{%- endcomment -%}
+
+<meta name="theme-color" content="{{ settings.color_ground }}">
+
+{%- if settings.favicon != blank -%}
+  <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+{%- endif -%}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --ink: {{ settings.color_ink }};
+    --ink-soft: {{ settings.color_ink_soft }};
+    --ground: {{ settings.color_ground }};
+    --card: {{ settings.color_card }};
+    --sage-deep: {{ settings.color_sage_deep }};
+    --olive: {{ settings.color_olive }};
+    --blush: {{ settings.color_blush }};
+    --rule: {{ settings.color_rule }};
+    --outline: {{ settings.color_outline }};
+    --accent: {{ settings.color_accent }};
+    --ink-deep: #123128;
+    --spine: #E8E1CE;
+    --shadow-card: 0 10px 28px rgba(31, 74, 61, 0.08);
+    --font-serif: 'EB Garamond', Georgia, serif;
+    --font-sans: Inter, system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --page-width: {{ settings.page_width }}px;
+  }
+</style>
+
+{{ 'theme.css' | asset_url | stylesheet_tag }}

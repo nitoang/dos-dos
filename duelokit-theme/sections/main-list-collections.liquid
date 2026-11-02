@@ -1,0 +1,26 @@
+{%- paginate collections by 12 -%}
+  <section class="section">
+    <div class="page-width">
+      <header class="page-head">
+        <h1>{{ 'general.collections' | t }}</h1>
+      </header>
+
+      <ul class="panels panels--collections" role="list">
+        {%- for collection in collections -%}
+          <li class="panel panel--{% cycle 'sage', 'blush', 'olive' %}">
+            <h2 class="panel__title"><a class="panel__link" href="{{ collection.url }}">{{ collection.title }}</a></h2>
+            <p class="fine-print">{{ 'collections.product_count' | t: count: collection.products_count }}</p>
+          </li>
+        {%- endfor -%}
+      </ul>
+
+      {% render 'pagination', paginate: paginate %}
+    </div>
+  </section>
+{%- endpaginate -%}
+
+{% schema %}
+{
+  "name": "Collection list page"
+}
+{% endschema %}

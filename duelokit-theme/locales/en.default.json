@@ -1,0 +1,88 @@
+{
+  "general": {
+    "skip_to_content": "Skip to content",
+    "main_menu": "Main menu",
+    "footer_menu": "Footer menu",
+    "menu": "Menu",
+    "search": "Search",
+    "cart": "Cart",
+    "collections": "Collections.",
+    "back_to_shop": "Back to the shop",
+    "meta": {
+      "tagged": "Tagged {{ tags }}",
+      "page": "Page {{ page }}"
+    },
+    "pagination": {
+      "label": "Pagination",
+      "previous": "Previous page",
+      "next": "Next page"
+    }
+  },
+  "newsletter": {
+    "email_label": "Email address",
+    "email_placeholder": "you@example.com",
+    "success": "Thank you. We'll be in touch."
+  },
+  "password": {
+    "owner_summary": "Store owner? Enter with the password",
+    "password_label": "Password",
+    "enter": "Enter"
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to cart",
+      "sold_out": "Sold out",
+      "unavailable": "Unavailable",
+      "from_price": "From {{ price }}",
+      "regular_price": "Regular price",
+      "placeholder_title": "Product title"
+    }
+  },
+  "collections": {
+    "view_all": "View all",
+    "empty": "Nothing in here yet.",
+    "product_count": {
+      "one": "{{ count }} item",
+      "other": "{{ count }} items"
+    }
+  },
+  "cart": {
+    "title": "Your cart.",
+    "empty": "Nothing here yet.",
+    "continue": "Keep browsing",
+    "quantity": "Quantity",
+    "remove": "Remove",
+    "subtotal": "Subtotal",
+    "update": "Update cart",
+    "checkout": "Check out",
+    "note": "Order note",
+    "taxes": "Taxes calculated at checkout.",
+    "taxes_shipping": "Shipping and taxes calculated at checkout."
+  },
+  "search": {
+    "title": "Search.",
+    "label": "Search the shop",
+    "placeholder": "Search",
+    "submit": "Search",
+    "results_count": {
+      "one": "{{ count }} result for “{{ terms }}”",
+      "other": "{{ count }} results for “{{ terms }}”"
+    },
+    "no_results": "Nothing found for “{{ terms }}”. Try another word."
+  },
+  "blog": {
+    "empty": "No posts yet.",
+    "back": "Back to the blog"
+  },
+  "contact": {
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send",
+    "success": "Thank you. Your message is on its way."
+  },
+  "not_found": {
+    "title": "We couldn't find that page.",
+    "subtext": "It may have moved. The shop is a good place to start."
+  }
+}

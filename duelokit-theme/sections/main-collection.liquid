@@ -1,0 +1,43 @@
+{%- paginate collection.products by section.settings.products_per_page -%}
+  <section class="section">
+    <div class="page-width">
+      <header class="page-head">
+        <h1>{{ collection.title }}</h1>
+        {%- if collection.description != blank -%}
+          <div class="lede rte">{{ collection.description }}</div>
+        {%- endif -%}
+      </header>
+
+      {%- if collection.products_count == 0 -%}
+        <p class="empty">{{ 'collections.empty' | t }}</p>
+      {%- else -%}
+        <ul class="grid grid--{{ section.settings.columns }}" role="list">
+          {%- for product in collection.products -%}
+            <li>{% render 'product-card', product: product %}</li>
+          {%- endfor -%}
+        </ul>
+
+        {% render 'pagination', paginate: paginate %}
+      {%- endif -%}
+    </div>
+  </section>
+{%- endpaginate -%}
+
+{% schema %}
+{
+  "name": "Collection page",
+  "settings": [
+    { "type": "range", "id": "products_per_page", "min": 8, "max": 24, "step": 4, "label": "Products per page", "default": 12 },
+    {
+      "type": "select",
+      "id": "columns",
+      "label": "Columns on desktop",
+      "options": [
+        { "value": "3", "label": "3" },
+        { "value": "4", "label": "4" }
+      ],
+      "default": "3"
+    }
+  ]
+}
+{% endschema %}

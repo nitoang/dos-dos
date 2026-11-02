@@ -1,0 +1,48 @@
+{%- paginate search.results by 12 -%}
+  {%- assign terms = search.terms | escape -%}
+
+  <section class="section">
+    <div class="page-width">
+      <header class="page-head">
+        <h1>{{ 'search.title' | t }}</h1>
+        <form action="{{ routes.search_url }}" method="get" role="search" class="pill-form">
+          <label class="visually-hidden" for="SearchInput">{{ 'search.label' | t }}</label>
+          <input id="SearchInput" type="search" name="q" value="{{ terms }}" placeholder="{{ 'search.placeholder' | t }}">
+          <button type="submit" class="button">{{ 'search.submit' | t }}</button>
+        </form>
+      </header>
+
+      {%- if search.performed -%}
+        {%- if search.results_count > 0 -%}
+          <p class="fine-print">{{ 'search.results_count' | t: count: search.results_count, terms: terms }}</p>
+
+          <ul class="grid grid--3" role="list">
+            {%- for item in search.results -%}
+              <li>
+                {%- if item.object_type == 'product' -%}
+                  {% render 'product-card', product: item %}
+                {%- else -%}
+                  <article class="card">
+                    <div class="card__body">
+                      <h3 class="card__title"><a href="{{ item.url }}">{{ item.title }}</a></h3>
+                    </div>
+                  </article>
+                {%- endif -%}
+              </li>
+            {%- endfor -%}
+          </ul>
+
+          {% render 'pagination', paginate: paginate %}
+        {%- else -%}
+          <p class="empty">{{ 'search.no_results' | t: terms: terms }}</p>
+        {%- endif -%}
+      {%- endif -%}
+    </div>
+  </section>
+{%- endpaginate -%}
+
+{% schema %}
+{
+  "name": "Search page"
+}
+{% endschema %}

@@ -1,0 +1,58 @@
+{%- liquid
+  comment
+    Coming-soon mode: customers see only the coming-soon page. The theme editor still shows the full site.
+  endcomment
+  assign coming_soon = false
+  if settings.coming_soon_mode and request.design_mode == false
+    assign coming_soon = true
+  endif
+-%}
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {%- if coming_soon -%}
+      <meta name="robots" content="noindex, follow">
+    {%- endif -%}
+    <link rel="canonical" href="{{ canonical_url }}">
+
+    {%- assign tag_list = current_tags | join: ', ' -%}
+    <title>
+      {{- page_title -}}
+      {%- if tag_list != blank %} &ndash; {{ 'general.meta.tagged' | t: tags: tag_list }}{% endif -%}
+      {%- if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif -%}
+      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+    </title>
+
+    {%- if page_description -%}
+      <meta name="description" content="{{ page_description | escape }}">
+    {%- endif -%}
+
+    {% render 'meta-tags' %}
+    {% render 'head-assets' %}
+
+    {{ content_for_header }}
+
+    <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+  </head>
+
+  <body class="template-{{ template.name | handleize }}">
+    {%- if coming_soon -%}
+      <main id="MainContent" tabindex="-1">
+        {% render 'coming-soon' %}
+      </main>
+    {%- else -%}
+      <a class="skip-link" href="#MainContent">{{ 'general.skip_to_content' | t }}</a>
+
+      {% sections 'header-group' %}
+
+      <main id="MainContent" tabindex="-1">
+        {{ content_for_layout }}
+      </main>
+
+      {% sections 'footer-group' %}
+    {%- endif -%}
+  </body>
+</html>

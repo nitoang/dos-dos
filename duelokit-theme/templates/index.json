@@ -1,0 +1,56 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {}
+    },
+    "kits": {
+      "type": "featured-collection",
+      "settings": {}
+    },
+    "panels": {
+      "type": "multicolumn",
+      "blocks": {
+        "short": {
+          "type": "panel",
+          "settings": {
+            "tint": "sage",
+            "heading": "Short and plain.",
+            "text": "<p>Short sentences. Plain words. Nothing asks more of you than you have.</p>"
+          }
+        },
+        "skip": {
+          "type": "panel",
+          "settings": {
+            "tint": "blush",
+            "heading": "Skip what hurts today.",
+            "text": "<p>Every page can stay empty. Come back to it, or don't.</p>"
+          }
+        },
+        "format": {
+          "type": "panel",
+          "settings": {
+            "tint": "olive",
+            "heading": "Print it or use it on screen.",
+            "text": "<p>Printable pages for a pen, and a digital workspace for the days a screen is easier.</p>"
+          }
+        }
+      },
+      "block_order": ["short", "skip", "format"],
+      "settings": {}
+    },
+    "closing": {
+      "type": "rich-text",
+      "settings": {
+        "eyebrow": "A note",
+        "heading": "Whatever is undone at 6 p.m. is forgiven.",
+        "text": "<p>One box checked counts as getting through the hour.</p>"
+      }
+    },
+    "signup": {
+      "type": "newsletter",
+      "settings": {}
+    }
+  },
+  "order": ["hero", "kits", "panels", "closing", "signup"]
+}

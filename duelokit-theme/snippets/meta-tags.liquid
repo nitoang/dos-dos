@@ -1,0 +1,30 @@
+{%- liquid
+  assign og_title = page_title | default: shop.name
+  assign og_type = 'website'
+  case request.page_type
+    when 'product'
+      assign og_type = 'product'
+    when 'article'
+      assign og_type = 'article'
+  endcase
+  assign og_description = page_description | default: shop.description | default: shop.name
+-%}
+
+<meta property="og:site_name" content="{{ shop.name | escape }}">
+<meta property="og:url" content="{{ canonical_url }}">
+<meta property="og:title" content="{{ og_title | strip_newlines | escape }}">
+<meta property="og:type" content="{{ og_type }}">
+<meta property="og:description" content="{{ og_description | strip_newlines | escape }}">
+
+{%- if page_image -%}
+  {%- assign og_image = page_image | image_url: width: 1200 -%}
+  {%- unless og_image contains 'https:' -%}
+    {%- assign og_image = og_image | prepend: 'https:' -%}
+  {%- endunless -%}
+  <meta property="og:image" content="{{ og_image }}">
+  <meta name="twitter:card" content="summary_large_image">
+{%- else -%}
+  <meta name="twitter:card" content="summary">
+{%- endif -%}
+<meta name="twitter:title" content="{{ og_title | strip_newlines | escape }}">
+<meta name="twitter:description" content="{{ og_description | strip_newlines | escape }}">

@@ -1,0 +1,14 @@
+<section class="section">
+  <div class="page-width empty-state">
+    <p class="eyebrow">404</p>
+    <h1>{{ 'not_found.title' | t }}</h1>
+    <p class="lede">{{ 'not_found.subtext' | t }}</p>
+    <a class="button" href="{{ routes.root_url }}">{{ 'general.back_to_shop' | t }}</a>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "404 page"
+}
+{% endschema %}

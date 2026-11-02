@@ -1,0 +1,73 @@
+{%- comment -%}
+  The coming-soon page, built from the duelokit coming-soon design: wordmark, marigold bar,
+  eyebrow, headline, lede and a pill email form on a sage ground.
+  Text comes from Theme settings > Coming soon.
+  Accepts:
+  - owner_access: {Boolean} show the storefront-password entry (only used on the password page)
+{%- endcomment -%}
+
+<section class="coming-soon">
+  <p class="wordmark wordmark--landing">{{ settings.coming_soon_wordmark }}</p>
+  <div class="accent-bar" aria-hidden="true"></div>
+
+  {%- if settings.coming_soon_eyebrow != blank -%}
+    <p class="eyebrow">{{ settings.coming_soon_eyebrow }}</p>
+  {%- endif -%}
+
+  <h1 class="coming-soon__title">{{ settings.coming_soon_heading }}</h1>
+
+  {%- if settings.coming_soon_text != blank -%}
+    <p class="coming-soon__lede">{{ settings.coming_soon_text }}</p>
+  {%- endif -%}
+
+  {%- form 'customer', id: 'ComingSoonForm', class: 'coming-soon__form' -%}
+    <input type="hidden" name="contact[tags]" value="newsletter">
+    <label class="visually-hidden" for="ComingSoonEmail">{{ 'newsletter.email_label' | t }}</label>
+    <div class="pill-form">
+      <input
+        id="ComingSoonEmail"
+        type="email"
+        name="contact[email]"
+        value="{{ form.email }}"
+        autocomplete="email"
+        autocorrect="off"
+        autocapitalize="off"
+        placeholder="{{ 'newsletter.email_placeholder' | t }}"
+        required
+        {% if form.errors %}aria-invalid="true"{% endif %}
+      >
+      <button type="submit" class="button">{{ settings.coming_soon_button }}</button>
+    </div>
+    {%- if form.posted_successfully? -%}
+      <p class="form-status" role="status">{{ settings.coming_soon_success }}</p>
+    {%- endif -%}
+    {%- if form.errors -%}
+      <p class="form-status form-status--error" role="alert">{{ form.errors | default_errors }}</p>
+    {%- endif -%}
+  {%- endform -%}
+
+  {%- if owner_access -%}
+    <details class="owner-access">
+      <summary>{{ 'password.owner_summary' | t }}</summary>
+      {%- form 'storefront_password' -%}
+        <label class="visually-hidden" for="StorefrontPassword">{{ 'password.password_label' | t }}</label>
+        <div class="pill-form">
+          <input
+            id="StorefrontPassword"
+            type="password"
+            name="password"
+            autocomplete="current-password"
+            placeholder="{{ 'password.password_label' | t }}"
+            required
+          >
+          <button type="submit" class="button button--secondary">{{ 'password.enter' | t }}</button>
+        </div>
+        {%- if form.errors -%}
+          <p class="form-status form-status--error" role="alert">{{ form.errors | default_errors }}</p>
+        {%- endif -%}
+      {%- endform -%}
+    </details>
+  {%- endif -%}
+
+  <p class="fine-print">&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}</p>
+</section>

@@ -1,0 +1,58 @@
+{%- liquid
+  assign button_link = section.settings.button_link | default: routes.all_products_collection_url
+-%}
+
+<section class="hero">
+  <div class="page-width hero__grid">
+    <div class="hero__text">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      <h1 class="hero__title">{{ section.settings.heading }}</h1>
+      {%- if section.settings.subheading != blank -%}
+        <p class="hero__sub">{{ section.settings.subheading }}</p>
+      {%- endif -%}
+      {%- if section.settings.button_label != blank -%}
+        <a class="button" href="{{ button_link }}">{{ section.settings.button_label }}</a>
+      {%- endif -%}
+    </div>
+
+    <div class="arch{% if section.settings.image != blank %} arch--image{% endif %}">
+      {%- if section.settings.image != blank -%}
+        {{ section.settings.image | image_url: width: 900 | image_tag: widths: '450, 700, 900', sizes: '(min-width: 820px) 440px, 90vw', loading: 'eager', alt: section.settings.image.alt }}
+      {%- else -%}
+        <div class="journal">
+          {%- if section.settings.cover_eyebrow != blank -%}
+            <p class="eyebrow eyebrow--small">{{ section.settings.cover_eyebrow }}</p>
+          {%- endif -%}
+          <p class="journal__title">{{ section.settings.cover_title }}</p>
+          <span class="journal__rule" aria-hidden="true"></span>
+          {%- if section.settings.cover_tagline != blank -%}
+            <p class="journal__tagline">{{ section.settings.cover_tagline }}</p>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Printable and digital grief kits" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "A quiet place to put things down." },
+    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "Printable pages and a digital workspace for the first weeks." },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop the kits" },
+    { "type": "url", "id": "button_link", "label": "Button link", "info": "Leave empty to link to all products." },
+    { "type": "header", "content": "Arch panel" },
+    { "type": "image_picker", "id": "image", "label": "Image", "info": "Leave empty to show the journal cover below." },
+    { "type": "text", "id": "cover_eyebrow", "label": "Cover eyebrow", "default": "Instant download" },
+    { "type": "text", "id": "cover_title", "label": "Cover title", "default": "The Processing Kit" },
+    { "type": "text", "id": "cover_tagline", "label": "Cover tagline", "default": "Use one sheet, or none." }
+  ],
+  "presets": [
+    { "name": "Hero" }
+  ]
+}
+{% endschema %}

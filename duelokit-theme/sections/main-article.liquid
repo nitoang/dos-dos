@@ -1,0 +1,27 @@
+<article class="section">
+  <div class="page-width page-width--narrow">
+    <header class="page-head">
+      <p class="eyebrow">
+        {{ article.published_at | time_tag: format: 'date' }}
+        {%- if article.author != blank %} &middot; {{ article.author }}{% endif -%}
+      </p>
+      <h1>{{ article.title }}</h1>
+    </header>
+
+    {%- if article.image != blank -%}
+      <div class="article__image">
+        {{ article.image | image_url: width: 1100 | image_tag: widths: '550, 825, 1100', sizes: '(min-width: 820px) 720px, 100vw', loading: 'eager', alt: article.image.alt }}
+      </div>
+    {%- endif -%}
+
+    <div class="rte">{{ article.content }}</div>
+
+    <p class="article__back"><a class="text-link" href="{{ blog.url }}">{{ 'blog.back' | t }}</a></p>
+  </div>
+</article>
+
+{% schema %}
+{
+  "name": "Article"
+}
+{% endschema %}

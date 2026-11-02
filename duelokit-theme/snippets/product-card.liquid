@@ -1,0 +1,27 @@
+{%- comment -%}
+  A product card. Pass product: nil to render a placeholder card.
+  Accepts: product
+{%- endcomment -%}
+
+<article class="card">
+  {%- if product != blank -%}
+    <div class="card__media">
+      {%- if product.featured_media != blank -%}
+        {{ product.featured_media | image_url: width: 640 | image_tag: widths: '320, 480, 640', sizes: '(min-width: 1000px) 25vw, 50vw', loading: 'lazy', alt: product.featured_media.alt }}
+      {%- else -%}
+        {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+    </div>
+    <div class="card__body">
+      <h3 class="card__title"><a href="{{ product.url }}">{{ product.title }}</a></h3>
+      {% render 'price', product: product %}
+    </div>
+  {%- else -%}
+    <div class="card__media">
+      {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+    </div>
+    <div class="card__body">
+      <h3 class="card__title">{{ 'products.product.placeholder_title' | t }}</h3>
+    </div>
+  {%- endif -%}
+</article>

@@ -1,0 +1,31 @@
+{%- comment -%}
+  Price for a product.
+  Accepts:
+  - product: {Object} product
+  - live: {Boolean} true on the product page, where the price follows the chosen variant
+{%- endcomment -%}
+
+{%- liquid
+  assign variant = product.selected_or_first_available_variant
+  assign on_sale = false
+  if variant.compare_at_price > variant.price
+    assign on_sale = true
+  endif
+  assign show_from = false
+  if product.price_varies and live != true
+    assign show_from = true
+    assign on_sale = false
+  endif
+-%}
+
+<p class="price{% if on_sale %} price--sale{% endif %}"{% if live %} data-price{% endif %}>
+  {%- if show_from -%}
+    {%- assign min_price = product.price_min | money -%}
+    <span class="price__current">{{ 'products.product.from_price' | t: price: min_price }}</span>
+  {%- else -%}
+    <span class="price__current">{{ variant.price | money }}</span>
+    {%- if on_sale -%}
+      <s class="price__compare"><span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span> {{ variant.compare_at_price | money }}</s>
+    {%- endif -%}
+  {%- endif -%}
+</p>

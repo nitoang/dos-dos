@@ -1,0 +1,58 @@
+{%- capture socials -%}
+  {%- if settings.social_instagram != blank -%}<li><a href="{{ settings.social_instagram }}" target="_blank" rel="noopener">Instagram</a></li>{%- endif -%}
+  {%- if settings.social_pinterest != blank -%}<li><a href="{{ settings.social_pinterest }}" target="_blank" rel="noopener">Pinterest</a></li>{%- endif -%}
+  {%- if settings.social_facebook != blank -%}<li><a href="{{ settings.social_facebook }}" target="_blank" rel="noopener">Facebook</a></li>{%- endif -%}
+  {%- if settings.social_tiktok != blank -%}<li><a href="{{ settings.social_tiktok }}" target="_blank" rel="noopener">TikTok</a></li>{%- endif -%}
+{%- endcapture -%}
+
+<footer class="footer">
+  <div class="page-width">
+    <div class="footer__grid">
+      <div class="footer__about">
+        <p class="wordmark">{{ section.settings.wordmark }}</p>
+        {%- if section.settings.text != blank -%}
+          <div class="footer__text rte">{{ section.settings.text }}</div>
+        {%- endif -%}
+      </div>
+
+      <nav class="footer__nav" aria-label="{{ 'general.footer_menu' | t }}">
+        {%- if section.settings.menu != blank -%}
+          <ul class="footer__links" role="list">
+            {%- for link in section.settings.menu.links -%}
+              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+      </nav>
+
+      {%- if section.settings.safety_text != blank -%}
+        <div class="footer__safety fine-print rte">{{ section.settings.safety_text }}</div>
+      {%- endif -%}
+    </div>
+
+    <div class="footer__bottom">
+      <span>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}</span>
+      {%- if socials != blank -%}
+        <ul class="footer__social" role="list">{{ socials }}</ul>
+      {%- endif -%}
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    { "type": "text", "id": "wordmark", "label": "Wordmark", "default": "duelokit." },
+    { "type": "richtext", "id": "text", "label": "About", "default": "<p>Printable and digital grief kits.</p>" },
+    { "type": "link_list", "id": "menu", "label": "Menu", "default": "footer" },
+    {
+      "type": "richtext",
+      "id": "safety_text",
+      "label": "Safety note",
+      "info": "Shown on every page. Edit it for your region.",
+      "default": "<p>Every duelokit kit is a set of tools, not treatment or medical advice.</p><p>If you feel unsafe, or you're thinking about hurting yourself, call or text 988 in the US, any hour.</p>"
+    }
+  ]
+}
+{% endschema %}

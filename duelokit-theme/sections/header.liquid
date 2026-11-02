@@ -1,0 +1,35 @@
+{%- capture nav_links -%}
+  {%- for link in section.settings.menu.links -%}
+    <li><a class="nav-link" href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title }}</a></li>
+  {%- endfor -%}
+{%- endcapture -%}
+
+<header class="header">
+  <div class="page-width header__inner">
+    <a class="wordmark" href="{{ routes.root_url }}">{{ section.settings.wordmark }}</a>
+
+    <nav class="header__nav" aria-label="{{ 'general.main_menu' | t }}">
+      <ul class="nav-list" role="list">{{ nav_links }}</ul>
+    </nav>
+
+    <div class="header__actions">
+      <a class="nav-link" href="{{ routes.search_url }}">{{ 'general.search' | t }}</a>
+      <a class="nav-link" href="{{ routes.cart_url }}">{{ 'general.cart' | t }} <span class="cart-count">{{ cart.item_count }}</span></a>
+
+      <details class="header__menu">
+        <summary class="nav-link">{{ 'general.menu' | t }}</summary>
+        <ul class="nav-list nav-list--stack" role="list">{{ nav_links }}</ul>
+      </details>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    { "type": "text", "id": "wordmark", "label": "Wordmark", "default": "duelokit." },
+    { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu" }
+  ]
+}
+{% endschema %}
