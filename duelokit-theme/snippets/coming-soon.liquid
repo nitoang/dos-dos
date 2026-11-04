@@ -8,21 +8,23 @@
 {%- endcomment -%}
 
 <section class="coming-soon{% if banner %} coming-soon--banner{% endif %}">
-  <p class="wordmark wordmark--landing">{{ settings.coming_soon_wordmark }}</p>
+  <p class="wordmark wordmark--landing">{{ settings.coming_soon_wordmark | default: 'duelokit.' }}</p>
   <div class="accent-bar" aria-hidden="true"></div>
 
-  {%- if settings.coming_soon_eyebrow != blank -%}
-    <p class="eyebrow">{{ settings.coming_soon_eyebrow }}</p>
+  {%- assign cs_eyebrow = settings.coming_soon_eyebrow | default: 'Coming soon' -%}
+  {%- if cs_eyebrow != blank -%}
+    <p class="eyebrow">{{ cs_eyebrow }}</p>
   {%- endif -%}
 
   {%- if banner -%}
-    <h2 class="coming-soon__title">{{ settings.coming_soon_heading }}</h2>
+    <h2 class="coming-soon__title">{{ settings.coming_soon_heading | default: "We're still building." }}</h2>
   {%- else -%}
-    <h1 class="coming-soon__title">{{ settings.coming_soon_heading }}</h1>
+    <h1 class="coming-soon__title">{{ settings.coming_soon_heading | default: "We're still building." }}</h1>
   {%- endif -%}
 
-  {%- if settings.coming_soon_text != blank -%}
-    <p class="coming-soon__lede">{{ settings.coming_soon_text }}</p>
+  {%- assign cs_text = settings.coming_soon_text | default: "Leave your email and we'll let you know when it's ready." -%}
+  {%- if cs_text != blank -%}
+    <p class="coming-soon__lede">{{ cs_text }}</p>
   {%- endif -%}
 
   {%- form 'customer', id: 'ComingSoonForm', class: 'coming-soon__form' -%}
@@ -41,10 +43,10 @@
         required
         {% if form.errors %}aria-invalid="true"{% endif %}
       >
-      <button type="submit" class="button">{{ settings.coming_soon_button }}</button>
+      <button type="submit" class="button">{{ settings.coming_soon_button | default: 'Notify me' }}</button>
     </div>
     {%- if form.posted_successfully? -%}
-      <p class="form-status" role="status">{{ settings.coming_soon_success }}</p>
+      <p class="form-status" role="status">{{ settings.coming_soon_success | default: "Thank you. We'll let you know when it's ready." }}</p>
     {%- endif -%}
     {%- if form.errors -%}
       <p class="form-status form-status--error" role="alert">{{ form.errors | default_errors }}</p>
@@ -74,7 +76,5 @@
     </details>
   {%- endif -%}
 
-  {%- unless banner -%}
-    <p class="fine-print">&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}</p>
-  {%- endunless -%}
+  <p class="fine-print">&copy; {{ 'now' | date: '%Y' }} {{ shop.name | downcase }}</p>
 </section>

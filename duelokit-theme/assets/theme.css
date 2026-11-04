@@ -427,10 +427,19 @@ summary { list-style: none; }
 .nav-link--sub { min-height: 36px; text-transform: none; letter-spacing: 0.02em; }
 
 /* Home page: the coming-soon block is the top of the page, so the header is just the menu */
-.template-index .header { border-bottom: 0; }
-.template-index .header .wordmark { visibility: hidden; }
 .template-index .announcement { display: none; }
-.template-index .coming-soon--banner { padding-top: 0; }
+.template-index .header {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 30;
+  border-bottom: 0;
+  background: none;
+}
+.template-index .header .wordmark,
+.template-index .header .header__inner > .wordmark { display: none; }
+.template-index .header .page-width { width: auto; max-width: none; margin: 0; padding-inline: 24px; }
+.template-index .coming-soon--banner { padding: 48px 40px 56px; }
 
 /* ---------- Hero ---------- */
 

@@ -1,6 +1,12 @@
 {
   "current": {
     "coming_soon_mode": true,
+    "coming_soon_wordmark": "duelokit.",
+    "coming_soon_eyebrow": "Coming soon",
+    "coming_soon_heading": "We're still building.",
+    "coming_soon_text": "Leave your email and we'll let you know when it's ready.",
+    "coming_soon_button": "Notify me",
+    "coming_soon_success": "Thank you. We'll let you know when it's ready.",
     "color_ink": "#1F4A3D",
     "color_ink_soft": "#3F5A4F",
     "color_ground": "#E9F0E7",
