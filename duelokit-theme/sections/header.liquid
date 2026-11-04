@@ -1,24 +1,34 @@
-{%- capture nav_links -%}
-  {%- for link in section.settings.menu.links -%}
-    <li><a class="nav-link" href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title }}</a></li>
-  {%- endfor -%}
-{%- endcapture -%}
+{%- comment -%}
+  Header: wordmark, cart and a Menu dropdown. Search is intentionally hidden.
+  The dropdown lists the menu chosen below (child links show nested), then "About Me".
+{%- endcomment -%}
+
+{%- assign about_url = section.settings.about_url | default: '/pages/about-me' -%}
 
 <header class="header">
   <div class="page-width header__inner">
     <a class="wordmark" href="{{ routes.root_url }}">{{ section.settings.wordmark }}</a>
 
-    <nav class="header__nav" aria-label="{{ 'general.main_menu' | t }}">
-      <ul class="nav-list" role="list">{{ nav_links }}</ul>
-    </nav>
-
     <div class="header__actions">
-      <a class="nav-link" href="{{ routes.search_url }}">{{ 'general.search' | t }}</a>
       <a class="nav-link" href="{{ routes.cart_url }}">{{ 'general.cart' | t }} <span class="cart-count">{{ cart.item_count }}</span></a>
 
       <details class="header__menu">
         <summary class="nav-link">{{ 'general.menu' | t }}</summary>
-        <ul class="nav-list nav-list--stack" role="list">{{ nav_links }}</ul>
+        <ul class="nav-list nav-list--stack" role="list" aria-label="{{ 'general.main_menu' | t }}">
+          {%- for link in section.settings.menu.links -%}
+            <li>
+              <a class="nav-link" href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title }}</a>
+              {%- if link.links.size > 0 -%}
+                <ul class="nav-sublist" role="list">
+                  {%- for child in link.links -%}
+                    <li><a class="nav-link nav-link--sub" href="{{ child.url }}"{% if child.current %} aria-current="page"{% endif %}>{{ child.title }}</a></li>
+                  {%- endfor -%}
+                </ul>
+              {%- endif -%}
+            </li>
+          {%- endfor -%}
+          <li><a class="nav-link" href="{{ about_url }}"{% if request.path == about_url %} aria-current="page"{% endif %}>{{ section.settings.about_label }}</a></li>
+        </ul>
       </details>
     </div>
   </div>
@@ -29,7 +39,9 @@
   "name": "Header",
   "settings": [
     { "type": "text", "id": "wordmark", "label": "Wordmark", "default": "duelokit." },
-    { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu" }
+    { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu" },
+    { "type": "text", "id": "about_label", "label": "About link label", "default": "About Me" },
+    { "type": "text", "id": "about_url", "label": "About link URL", "info": "Create a page called About Me in Online Store > Pages, then paste its path here.", "default": "/pages/about-me" }
   ]
 }
 {% endschema %}

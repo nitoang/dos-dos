@@ -1,5 +1,9 @@
 {
   "sections": {
+    "coming_soon": {
+      "type": "coming-soon-banner",
+      "settings": {}
+    },
     "hero": {
       "type": "hero",
       "settings": {}
@@ -52,5 +56,5 @@
       "settings": {}
     }
   },
-  "order": ["hero", "kits", "panels", "closing", "signup"]
+  "order": ["coming_soon", "hero", "kits", "panels", "closing", "signup"]
 }

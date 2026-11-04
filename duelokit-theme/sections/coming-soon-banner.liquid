@@ -1,0 +1,18 @@
+{%- comment -%}
+  Coming-soon notice for the top of a page. Same design as the coming-soon page.
+  Text comes from Theme settings > Coming soon.
+{%- endcomment -%}
+
+{% render 'coming-soon', banner: true %}
+
+{% schema %}
+{
+  "name": "Coming soon",
+  "settings": [
+    { "type": "paragraph", "content": "Edit the wording under Theme settings > Coming soon." }
+  ],
+  "presets": [
+    { "name": "Coming soon" }
+  ]
+}
+{% endschema %}

@@ -337,6 +337,13 @@ summary { list-style: none; }
 
 .coming-soon .fine-print { margin: 40px 0 0; }
 
+/* Same design, used as a section at the top of the home page */
+.coming-soon--banner {
+  min-height: 0;
+  padding-block: 64px;
+  background: var(--sage, transparent);
+}
+
 /* ---------- Header ---------- */
 
 .announcement {
@@ -393,7 +400,37 @@ summary { list-style: none; }
 .cart-count::before { content: '('; }
 .cart-count::after { content: ')'; }
 
-.header__menu { display: none; }
+/* Menu dropdown (all screen sizes) */
+.header__menu { position: relative; }
+.header__menu summary { cursor: pointer; list-style: none; }
+.header__menu summary::-webkit-details-marker { display: none; }
+.header__menu summary::after { content: '\25BE'; margin-left: 6px; }
+
+.header__menu[open] .nav-list {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 20;
+  flex-direction: column;
+  gap: 0;
+  min-width: 220px;
+  padding: 8px 20px;
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  box-shadow: var(--shadow-card);
+}
+
+.header__menu .nav-list .nav-link { width: 100%; min-height: 44px; }
+.header__menu .nav-list > li + li { border-top: 1px solid var(--rule); }
+.nav-sublist { margin: 0; padding: 0 0 8px 16px; list-style: none; }
+.nav-link--sub { min-height: 36px; text-transform: none; letter-spacing: 0.02em; }
+
+/* Home page: the coming-soon block is the top of the page, so the header is just the menu */
+.template-index .header { border-bottom: 0; }
+.template-index .header .wordmark { visibility: hidden; }
+.template-index .announcement { display: none; }
+.template-index .coming-soon--banner { padding-top: 0; }
 
 /* ---------- Hero ---------- */
 

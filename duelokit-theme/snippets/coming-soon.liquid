@@ -3,10 +3,11 @@
   eyebrow, headline, lede and a pill email form on a sage ground.
   Text comes from Theme settings > Coming soon.
   Accepts:
+  - banner: {Boolean} render as a section at the top of a page (no full-height, h2 instead of h1, no copyright)
   - owner_access: {Boolean} show the storefront-password entry (only used on the password page)
 {%- endcomment -%}
 
-<section class="coming-soon">
+<section class="coming-soon{% if banner %} coming-soon--banner{% endif %}">
   <p class="wordmark wordmark--landing">{{ settings.coming_soon_wordmark }}</p>
   <div class="accent-bar" aria-hidden="true"></div>
 
@@ -14,7 +15,11 @@
     <p class="eyebrow">{{ settings.coming_soon_eyebrow }}</p>
   {%- endif -%}
 
-  <h1 class="coming-soon__title">{{ settings.coming_soon_heading }}</h1>
+  {%- if banner -%}
+    <h2 class="coming-soon__title">{{ settings.coming_soon_heading }}</h2>
+  {%- else -%}
+    <h1 class="coming-soon__title">{{ settings.coming_soon_heading }}</h1>
+  {%- endif -%}
 
   {%- if settings.coming_soon_text != blank -%}
     <p class="coming-soon__lede">{{ settings.coming_soon_text }}</p>
@@ -69,5 +74,7 @@
     </details>
   {%- endif -%}
 
-  <p class="fine-print">&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}</p>
+  {%- unless banner -%}
+    <p class="fine-print">&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}</p>
+  {%- endunless -%}
 </section>

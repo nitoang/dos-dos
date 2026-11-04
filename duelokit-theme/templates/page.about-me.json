@@ -1,0 +1,21 @@
+{
+  "sections": {
+    "intro": {
+      "type": "rich-text",
+      "settings": {
+        "eyebrow": "About me",
+        "heading": "Hello, and welcome.",
+        "text": "<p>duelokit is a small shop of gentle grief journal pages and tools. Everything here is made to be short, plain and easy to put down.</p><p>Nothing asks more of you than you have. Take what helps and leave the rest.</p>"
+      }
+    },
+    "why": {
+      "type": "rich-text",
+      "settings": {
+        "eyebrow": "Why I made this",
+        "heading": "Grief is heavy enough.",
+        "text": "<p>Replace this text with your own story in the theme editor: who you are, what led you to make duelokit, and who it is for.</p>"
+      }
+    }
+  },
+  "order": ["intro", "why"]
+}
