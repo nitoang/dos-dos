@@ -4,16 +4,16 @@
       "type": "rich-text",
       "settings": {
         "eyebrow": "About me",
-        "heading": "Hello, and welcome.",
-        "text": "<p>duelokit is a small shop of gentle grief journal pages and tools. Everything here is made to be short, plain and easy to put down.</p><p>Nothing asks more of you than you have. Take what helps and leave the rest.</p>"
+        "heading": "Made with the grieving heart in mind.",
+        "text": "<p>Based in DTX, I organize and create resources with the grieving heart in mind. I've lost quite a few family members, and I built this space so others can find resources to help themselves or a loved one process their grieving journey.</p><p>One thing I've noticed: no two grief journeys look the same. Yours won't feel the same as someone else's, and it won't feel the same if you, or someone you love, has lost multiple people or pets in a lifetime.</p>"
       }
     },
     "why": {
       "type": "rich-text",
       "settings": {
-        "eyebrow": "Why I made this",
-        "heading": "Grief is heavy enough.",
-        "text": "<p>Replace this text with your own story in the theme editor: who you are, what led you to make duelokit, and who it is for.</p>"
+        "eyebrow": "What helped me",
+        "heading": "You're not alone.",
+        "text": "<p>Journaling, video blogging and exercise have helped me tremendously. Grief takes many shapes and forms over your lifetime. I picked up journaling and running (I completed my first marathon, woohoo!), but it's tough when you don't have a community.</p><p>I hope the tools here, and the space I provide, help you find comfort in knowing you're not alone.</p><p>Grief sucks. Death sucks.</p>"
       }
     }
   },
