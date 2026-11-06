@@ -3,7 +3,9 @@
     "name": "theme_info",
     "theme_name": "duelokit",
     "theme_version": "1.0.0",
-    "theme_author": "duelokit"
+    "theme_author": "duelokit",
+    "theme_documentation_url": "https://duelokit.com",
+    "theme_support_email": "hello@duelokit.com"
   },
   {
     "name": "Coming soon",
