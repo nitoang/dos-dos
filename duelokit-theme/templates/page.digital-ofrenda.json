@@ -1,0 +1,120 @@
+{
+  "sections": {
+    "intro": {
+      "type": "rich-text",
+      "settings": {
+        "eyebrow": "Digital Ofrenda",
+        "heading": "A digital ofrenda that keeps the light on.",
+        "text": "<p>An ofrenda is a place we set for the people we miss. This is a quiet, online version: light a candle, add their photo, and surround it with the things they loved. Then share the link with anyone who loved them too.</p>"
+      }
+    },
+    "how": {
+      "type": "multicolumn",
+      "blocks": {
+        "candle": {
+          "type": "panel",
+          "settings": {
+            "tint": "sage",
+            "heading": "A candle.",
+            "text": "<p>Light one for them. Visitors can light a candle too, so the altar is never alone.</p>"
+          }
+        },
+        "photo": {
+          "type": "panel",
+          "settings": {
+            "tint": "blush",
+            "heading": "Their photo.",
+            "text": "<p>Give them a place of honor on the altar, framed the way you would at home.</p>"
+          }
+        },
+        "loved": {
+          "type": "panel",
+          "settings": {
+            "tint": "olive",
+            "heading": "Something they loved.",
+            "text": "<p>Marigolds, pan de muerto, a favorite song, a morning coffee. Drag each offering where it belongs.</p>"
+          }
+        }
+      },
+      "block_order": ["candle", "photo", "loved"],
+      "settings": {
+        "heading": "Build it the way you would at home."
+      }
+    },
+    "everyone": {
+      "type": "rich-text",
+      "settings": {
+        "eyebrow": "For everyone you miss",
+        "heading": "People, pets, or both.",
+        "text": "<p>Grief doesn't only come from losing a person. Make an altar for a grandmother, a friend, a best dog, or all of them together. Nothing asks more of you than you have.</p>"
+      }
+    },
+    "free": {
+      "type": "multicolumn",
+      "blocks": {
+        "free": {
+          "type": "panel",
+          "settings": {
+            "tint": "sage",
+            "heading": "Free to make.",
+            "text": "<p>One complete altar with a shareable link, a starter set of candles and marigolds, and room for a few photos and offerings. Visitors open it without an account. Nothing here is a trial. It stays.</p>"
+          }
+        },
+        "paid": {
+          "type": "panel",
+          "settings": {
+            "tint": "blush",
+            "heading": "Paid to keep.",
+            "text": "<p>For families who want it to last: more than one altar, unlimited photos and voice messages, a permanent link, private or invite-only altars, and family members adding their own offerings.</p>"
+          }
+        }
+      },
+      "block_order": ["free", "paid"],
+      "settings": {
+        "heading": "Remembering is never behind a paywall."
+      }
+    },
+    "privacy": {
+      "type": "multicolumn",
+      "blocks": {
+        "private": {
+          "type": "panel",
+          "settings": {
+            "tint": "olive",
+            "heading": "Private by default.",
+            "text": "<p>Your altar is planned to open only to the people you share the link with. There is no public gallery, no face recognition, and your photos are never used to train AI.</p>"
+          }
+        },
+        "yours": {
+          "type": "panel",
+          "settings": {
+            "tint": "sage",
+            "heading": "Yours to keep or delete.",
+            "text": "<p>Download everything you've added, or delete it for good, whenever you want. Your memories are never sold or used for ads.</p>"
+          }
+        },
+        "adults": {
+          "type": "panel",
+          "settings": {
+            "tint": "blush",
+            "heading": "Made for adults.",
+            "text": "<p>You choose what goes on your altar, so only add photos you have the right to share.</p>"
+          }
+        }
+      },
+      "block_order": ["private", "yours", "adults"],
+      "settings": {
+        "heading": "Your memories stay yours."
+      }
+    },
+    "waitlist": {
+      "type": "newsletter",
+      "settings": {
+        "heading": "Be there when the light goes on.",
+        "text": "The Digital Ofrenda is coming soon. Leave your email and I'll let you know when you can build yours.",
+        "button_label": "Notify me"
+      }
+    }
+  },
+  "order": ["intro", "how", "everyone", "free", "privacy", "waitlist"]
+}

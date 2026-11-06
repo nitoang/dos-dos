@@ -4,6 +4,7 @@
 {%- endcomment -%}
 
 {%- assign about_url = section.settings.about_url | default: '/pages/about-me' -%}
+{%- assign ofrenda_url = section.settings.ofrenda_url | default: '/pages/digital-ofrenda' -%}
 
 <header class="header">
   <div class="page-width header__inner">
@@ -28,6 +29,7 @@
             </li>
           {%- endfor -%}
           <li><a class="nav-link" href="{{ about_url }}"{% if request.path == about_url %} aria-current="page"{% endif %}>{{ section.settings.about_label }}</a></li>
+          <li><a class="nav-link" href="{{ ofrenda_url }}"{% if request.path == ofrenda_url %} aria-current="page"{% endif %}>{{ section.settings.ofrenda_label }}</a></li>
         </ul>
       </details>
     </div>
@@ -41,7 +43,9 @@
     { "type": "text", "id": "wordmark", "label": "Wordmark", "default": "duelokit." },
     { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu" },
     { "type": "text", "id": "about_label", "label": "About link label", "default": "About Me" },
-    { "type": "text", "id": "about_url", "label": "About link URL", "info": "Create a page called About Me in Online Store > Pages, then paste its path here.", "default": "/pages/about-me" }
+    { "type": "text", "id": "about_url", "label": "About link URL", "info": "Create a page called About Me in Online Store > Pages, then paste its path here.", "default": "/pages/about-me" },
+    { "type": "text", "id": "ofrenda_label", "label": "Ofrenda link label", "default": "Digital Ofrenda" },
+    { "type": "text", "id": "ofrenda_url", "label": "Ofrenda link URL", "info": "Create a page called Digital Ofrenda in Online Store > Pages, then paste its path here.", "default": "/pages/digital-ofrenda" }
   ]
 }
 {% endschema %}

@@ -1,0 +1,93 @@
+{%- comment -%}
+  Digital Ofrenda: a quiet altar of remembrances. Each block is one person (or pet) being remembered.
+  Add, reorder and edit them in the theme editor. No names are collected publicly.
+{%- endcomment -%}
+
+<section class="section ofrenda">
+  <div class="page-width">
+    {%- if section.settings.heading != blank or section.settings.text != blank -%}
+      <div class="ofrenda__head">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="ofrenda__title">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.text != blank -%}
+          <div class="ofrenda__intro rte">{{ section.settings.text }}</div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <ul class="ofrenda__grid" role="list">
+        {%- for block in section.blocks -%}
+          <li class="ofrenda__item ofrenda__item--{{ block.settings.tint }}" {{ block.shopify_attributes }}>
+            <div class="ofrenda__portrait{% if block.settings.image == blank %} ofrenda__portrait--empty{% endif %}">
+              {%- if block.settings.image != blank -%}
+                {{ block.settings.image | image_url: width: 480 | image_tag: loading: 'lazy', widths: '240, 360, 480', sizes: '(max-width: 667px) 80vw, 240px', alt: block.settings.name }}
+              {%- endif -%}
+            </div>
+
+            {%- if section.settings.show_candles -%}
+              <span class="ofrenda__candle" aria-hidden="true"><span class="ofrenda__flame"></span></span>
+            {%- endif -%}
+
+            <h3 class="ofrenda__name">{{ block.settings.name }}</h3>
+            {%- if block.settings.dates != blank -%}
+              <p class="eyebrow eyebrow--small ofrenda__dates">{{ block.settings.dates }}</p>
+            {%- endif -%}
+            {%- if block.settings.note != blank -%}
+              <p class="ofrenda__note">{{ block.settings.note }}</p>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- else -%}
+      <p class="empty-state">{{ section.settings.empty_text }}</p>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Digital Ofrenda",
+  "max_blocks": 24,
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Who are you remembering?" },
+    { "type": "richtext", "id": "text", "label": "Intro", "default": "<p>An ofrenda is a way of setting a place for the people we miss. Light a candle, say their name, stay as long as you like.</p>" },
+    { "type": "checkbox", "id": "show_candles", "label": "Show a candle on each card", "default": true },
+    { "type": "text", "id": "empty_text", "label": "Text when there are no remembrances yet", "default": "The ofrenda is waiting for its first name." }
+  ],
+  "blocks": [
+    {
+      "type": "remembrance",
+      "name": "Remembrance",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Name", "default": "Their name" },
+        { "type": "text", "id": "dates", "label": "Dates or relationship", "info": "For example 1948 to 2021, or Abuela.", "default": "Abuela" },
+        { "type": "textarea", "id": "note", "label": "A line to remember them by", "default": "She hummed while she cooked and never let anyone leave hungry." },
+        { "type": "image_picker", "id": "image", "label": "Photo (optional)" },
+        {
+          "type": "select",
+          "id": "tint",
+          "label": "Color",
+          "options": [
+            { "value": "sage", "label": "Deep sage" },
+            { "value": "blush", "label": "Blush" },
+            { "value": "olive", "label": "Olive mist" }
+          ],
+          "default": "blush"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Digital Ofrenda",
+      "blocks": [
+        { "type": "remembrance", "settings": { "tint": "blush" } },
+        { "type": "remembrance", "settings": { "tint": "sage" } },
+        { "type": "remembrance", "settings": { "tint": "olive" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
