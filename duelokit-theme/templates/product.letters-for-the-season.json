@@ -1,0 +1,77 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "settings": {
+        "eyebrow": "Printable journal · Instant download"
+      }
+    },
+    "inside": {
+      "type": "multicolumn",
+      "blocks": {
+        "letters": {
+          "type": "panel",
+          "settings": {
+            "tint": "sage",
+            "heading": "Twelve letters.",
+            "text": "<p>One for each stretch of the season. Read one when you need it, answer it when you can, and skip the ones that aren't for today.</p>"
+          }
+        },
+        "breath": {
+          "type": "panel",
+          "settings": {
+            "tint": "blush",
+            "heading": "A page to breathe.",
+            "text": "<p>Halfway through, a quiet page that asks nothing of you. You can come back to it as often as you need.</p>"
+          }
+        },
+        "keep": {
+          "type": "panel",
+          "settings": {
+            "tint": "olive",
+            "heading": "A page to keep.",
+            "text": "<p>A \"to read aloud\" page and a \"kept here\" page for the words and moments you want to hold onto.</p>"
+          }
+        }
+      },
+      "block_order": ["letters", "breath", "keep"],
+      "settings": {
+        "heading": "What's inside."
+      }
+    },
+    "how": {
+      "type": "rich-text",
+      "settings": {
+        "eyebrow": "How it works",
+        "heading": "Download, print, write back.",
+        "text": "<p>You'll get a 20-page PDF in US Letter size, ready to print at home or at a print shop. Start with the cover and the \"belongs to\" page, add a little about you, then take the letters at your own pace. There is no wrong order and no deadline.</p>"
+      }
+    },
+    "details": {
+      "type": "multicolumn",
+      "blocks": {
+        "format": {
+          "type": "panel",
+          "settings": {
+            "tint": "sage",
+            "heading": "The details.",
+            "text": "<p>20 pages. US Letter. Digital download, nothing ships. Print as many times as you like for your own use.</p>"
+          }
+        },
+        "gentle": {
+          "type": "panel",
+          "settings": {
+            "tint": "blush",
+            "heading": "A gentle note.",
+            "text": "<p>This is a companion for hard seasons, not a replacement for care from a doctor or counselor. If you're struggling, please reach out to someone who can sit with you.</p>"
+          }
+        }
+      },
+      "block_order": ["format", "gentle"],
+      "settings": {
+        "heading": ""
+      }
+    }
+  },
+  "order": ["main", "inside", "how", "details"]
+}
