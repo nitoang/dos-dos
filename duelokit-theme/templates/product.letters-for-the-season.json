@@ -3,7 +3,7 @@
     "main": {
       "type": "main-product",
       "settings": {
-        "eyebrow": "Printable journal · Instant download"
+        "eyebrow": "Editable Canva template · Instant access"
       }
     },
     "inside": {
@@ -34,7 +34,11 @@
           }
         }
       },
-      "block_order": ["letters", "breath", "keep"],
+      "block_order": [
+        "letters",
+        "breath",
+        "keep"
+      ],
       "settings": {
         "heading": "What's inside."
       }
@@ -43,8 +47,8 @@
       "type": "rich-text",
       "settings": {
         "eyebrow": "How it works",
-        "heading": "Download, print, write back.",
-        "text": "<p>You'll get a 20-page PDF in US Letter size, ready to print at home or at a print shop. Start with the cover and the \"belongs to\" page, add a little about you, then take the letters at your own pace. There is no wrong order and no deadline.</p>"
+        "heading": "Open in Canva, make it yours.",
+        "text": "<p>After you buy, you'll get a link to your own copy of the 20-page template in Canva. Change the wording, fonts and colors, add your own photos, then print it at home or at a print shop, or download it as a PDF. Start with the cover and the \"belongs to\" page, then take the letters at your own pace.</p>"
       }
     },
     "details": {
@@ -55,7 +59,7 @@
           "settings": {
             "tint": "sage",
             "heading": "The details.",
-            "text": "<p>20 pages. US Letter. Digital download, nothing ships. Print as many times as you like for your own use.</p>"
+            "text": "<p>20 pages. US Letter. Delivered as a Canva template link, nothing ships. A free Canva account is all you need to edit it.</p>"
           }
         },
         "gentle": {
@@ -65,13 +69,30 @@
             "heading": "A gentle note.",
             "text": "<p>This is a companion for hard seasons, not a replacement for care from a doctor or counselor. If you're struggling, please reach out to someone who can sit with you.</p>"
           }
+        },
+        "license": {
+          "type": "panel",
+          "settings": {
+            "tint": "olive",
+            "heading": "Using it.",
+            "text": "<p>For your own use and for gifts you make from it. Please don't resell, share or redistribute the template itself.</p>"
+          }
         }
       },
-      "block_order": ["format", "gentle"],
+      "block_order": [
+        "format",
+        "license",
+        "gentle"
+      ],
       "settings": {
         "heading": ""
       }
     }
   },
-  "order": ["main", "inside", "how", "details"]
+  "order": [
+    "main",
+    "inside",
+    "how",
+    "details"
+  ]
 }
