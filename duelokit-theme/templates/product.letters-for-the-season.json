@@ -1,0 +1,98 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "settings": {
+        "eyebrow": "Editable Canva template · Instant access"
+      }
+    },
+    "inside": {
+      "type": "multicolumn",
+      "blocks": {
+        "letters": {
+          "type": "panel",
+          "settings": {
+            "tint": "sage",
+            "heading": "Twelve letters.",
+            "text": "<p>One for each stretch of the season. Read one when you need it, answer it when you can, and skip the ones that aren't for today.</p>"
+          }
+        },
+        "breath": {
+          "type": "panel",
+          "settings": {
+            "tint": "blush",
+            "heading": "A page to breathe.",
+            "text": "<p>Halfway through, a quiet page that asks nothing of you. You can come back to it as often as you need.</p>"
+          }
+        },
+        "keep": {
+          "type": "panel",
+          "settings": {
+            "tint": "olive",
+            "heading": "A page to keep.",
+            "text": "<p>A \"to read aloud\" page and a \"kept here\" page for the words and moments you want to hold onto.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "letters",
+        "breath",
+        "keep"
+      ],
+      "settings": {
+        "heading": "What's inside."
+      }
+    },
+    "how": {
+      "type": "rich-text",
+      "settings": {
+        "eyebrow": "How it works",
+        "heading": "Open in Canva, make it yours.",
+        "text": "<p>After you buy, you'll get a link to your own copy of the 20-page template in Canva. Change the wording, fonts and colors, add your own photos, then print it at home or at a print shop, or download it as a PDF. Start with the cover and the \"belongs to\" page, then take the letters at your own pace.</p>"
+      }
+    },
+    "details": {
+      "type": "multicolumn",
+      "blocks": {
+        "format": {
+          "type": "panel",
+          "settings": {
+            "tint": "sage",
+            "heading": "The details.",
+            "text": "<p>20 pages. US Letter. Delivered as a Canva template link, nothing ships. A free Canva account is all you need to edit it.</p>"
+          }
+        },
+        "gentle": {
+          "type": "panel",
+          "settings": {
+            "tint": "blush",
+            "heading": "A gentle note.",
+            "text": "<p>This is a companion for hard seasons, not a replacement for care from a doctor or counselor. If you're struggling, please reach out to someone who can sit with you.</p>"
+          }
+        },
+        "license": {
+          "type": "panel",
+          "settings": {
+            "tint": "olive",
+            "heading": "Using it.",
+            "text": "<p>For your own use and for gifts you make from it. Please don't resell, share or redistribute the template itself.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "format",
+        "license",
+        "gentle"
+      ],
+      "settings": {
+        "heading": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "inside",
+    "how",
+    "details"
+  ]
+}
